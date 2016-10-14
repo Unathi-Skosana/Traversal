@@ -9,14 +9,8 @@ public class gamePiece {
         this.symbol = symbol;
     }
 
-    public String getSymbol() {
-    
-        return symbol;
-    }
+    public String getSymbol() { return symbol; }
 
-    public Position getPosititon() {
-    
-        return position;
-    }
+    public Position getPosition() { return position; }
 
 }
