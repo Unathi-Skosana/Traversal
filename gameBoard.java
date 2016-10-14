@@ -1,7 +1,13 @@
+import java.util.HashMap;
+
 public class gameBoard {
+
+  // Use a HashMap to represent the gameBoard object.
 
     public final int boardWidth;
     public final int boardHeight;
+    public gamePiece player;
+    public HashMap<String, gamePiece> gamePieces;
 
     public gameBoard(int boardWidth, int boardHeight) {
     
@@ -15,7 +21,7 @@ public class gameBoard {
         //  you are using to represent gameBoard
     }
 
-    public void draw_gamePiece(String symbol) {
+    public void draw_gamePiece(String symbol) { // Move to the GUI object that represents the gameBoard object.
     
       // draw gamePiece by using the graphics library.
      
