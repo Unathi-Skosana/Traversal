@@ -9,6 +9,29 @@ public class gamepiecesGUI {
   private static final Color blue = new Color(0, 76, 255);
   private static final Color greenK = new Color(24, 219, 190);
 
+
+    public static void initialiseCanvas(int R, int C) {
+        StdDraw.setCanvasSize(100 * R,100 * C);
+        StdDraw.setXscale(0, R);
+        StdDraw.setYscale(0, C);
+    }
+
+    public static void drawBorder(int R, int C) {
+        for (double n = .525; n < R; n++) {
+            for (double m = .525; m < C; m++) {
+                StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+                StdDraw.filledSquare(n, m, .525);
+            }
+        }
+
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.setPenRadius(.0160);
+        StdDraw.line(0,0,0,C);
+        StdDraw.line(0,C,R,C);
+        StdDraw.line(R,C,R,0);
+        StdDraw.line(R,0,0,0);
+    }
+ 
     public static void player(Position p) {    
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
@@ -18,17 +41,6 @@ public class gamepiecesGUI {
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.line(p.getX() + .52,p.getY() + .72,p.getX() + .52,p.getY() + .32);
         StdDraw.line(p.getX() + .72,p.getY() + .52,p.getX() + .32,p.getY() + .52);
-    }
-
-    public static void closed_Port(Position p) {
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.filledCircle(p.getX() + .52, p.getY() + .52, .40);
-        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        StdDraw.filledCircle(p.getX() + .52, p.getY() + .52, .325);
-        StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.line(p.getX() + .36,p.getY() + .35,p.getX() + .67,p.getY() + .67);
-        StdDraw.line(p.getX() + .36,p.getY() + .67,p.getX() + .67,p.getY() + .35);
     }
 
 	  public static void target(Position p) {
@@ -42,19 +54,15 @@ public class gamepiecesGUI {
         StdDraw.line(p.getX() + .431,p.getY() + .37,p.getX() + .700,p.getY() + .64);
     }
 
-	  public static void vert_UpMover(Position p) {
+	  public static void wall(Position p) {
         StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.filledCircle(p.getX() + .52, p.getY() + .52, .40);
-        StdDraw.setPenColor(blue);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52, .325);
         StdDraw.setPenRadius(.0145);
         StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
-        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
-        StdDraw.line(p.getX() + .52,p.getY() + .600,p.getX() + .40,p.getY() + .45);
-        StdDraw.line(p.getX() + .52,p.getY() + .600,p.getX() + .64,p.getY() + .45);
+        StdDraw.filledCircle(.52 + p.getX() ,.52 + p.getY() ,.40);
+        StdDraw.setPenColor(StdDraw.GRAY);
+        StdDraw.filledCircle(.52 + p.getX() ,.52 + p.getY() ,.325);
     }
-
+ 
 	  public static void hor_UpMover(Position p) {
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52, .40);
@@ -106,8 +114,61 @@ public class gamepiecesGUI {
         StdDraw.line(p.getX() + .845,p.getY() + .52,p.getX() + .75,p.getY() + .52);
         StdDraw.line(p.getX() + .195,p.getY() + .52,p.getX() + .29,p.getY() + .52);
     }
+	  
+  	public static void vert_LeftMover(Position p) {
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
+        StdDraw.setPenColor(purple);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
+        StdDraw.setPenRadius(.0145);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.line(p.getX() + .45,p.getY() + .52,p.getX() + .59,p.getY() + .43);
+        StdDraw.line(p.getX() + .45,p.getY() + .52,p.getX() + .59,p.getY() + .62);
+        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
+        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
+    }
 
-	  public static void open_Key(Position p) {
+	  public static void vert_RightMover(Position p) {
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
+        StdDraw.setPenColor(orange);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
+        StdDraw.setPenRadius(.0145);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.line(p.getX() + .59,p.getY() + .52,p.getX() + .45,p.getY() + .43);
+        StdDraw.line(p.getX() + .59,p.getY() + .52,p.getX() + .45,p.getY() + .62);
+        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
+        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
+    }
+
+    public static void vert_UpMover(Position p) {
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.filledCircle(p.getX() + .52, p.getY() + .52, .40);
+        StdDraw.setPenColor(blue);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52, .325);
+        StdDraw.setPenRadius(.0145);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
+        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
+        StdDraw.line(p.getX() + .52,p.getY() + .600,p.getX() + .40,p.getY() + .45);
+        StdDraw.line(p.getX() + .52,p.getY() + .600,p.getX() + .64,p.getY() + .45);
+    }
+
+
+	  public static void vert_DownMover(Position p) {
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
+        StdDraw.setPenColor(darkOrange);
+        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
+        StdDraw.setPenRadius(.0145);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
+        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
+        StdDraw.line(p.getX() + .52,p.getY() + .450,p.getX() + .40,p.getY() + .59);
+        StdDraw.line(p.getX() + .52,p.getY() + .450,p.getX() + .64,p.getY() + .59);
+    }
+
+    public static void open_Key(Position p) {
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
         StdDraw.setPenColor(blue);
@@ -156,29 +217,7 @@ public class gamepiecesGUI {
         StdDraw.line(p.getX() + .195,p.getY() + .52,p.getX() + .29,p.getY() + .52);
     }
 
-	  public static void closed_HorSwitch(Position p) {
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
-        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
-        StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.line(p.getX() + .845,p.getY() + .52,p.getX() + .75,p.getY() + .52);
-        StdDraw.line(p.getX() + .195,p.getY() + .52,p.getX() + .29,p.getY() + .52);
-    }
-
-	  public static void closed_VertSwitch(Position p) {
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
-        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
-        StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
-        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
-    }
-
-	  public static void closed_Key(Position p) {
+    public static void closed_Key(Position p) {
         StdDraw.setPenColor(StdDraw.GRAY);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
         StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
@@ -194,73 +233,46 @@ public class gamepiecesGUI {
         StdDraw.filledCircle(p.getX() + .365,p.getY() + .52,.065);
     }
 
-	  public static void wall(Position p) {
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.filledCircle(.52 + p.getX() ,.52 + p.getY() ,.40);
+
+    public static void closed_VertSwitch(Position p) {
         StdDraw.setPenColor(StdDraw.GRAY);
-        StdDraw.filledCircle(.52 + p.getX() ,.52 + p.getY() ,.325);
-    }
-
-  	public static void vert_LeftMover(Position p) {
-        StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
-        StdDraw.setPenColor(purple);
+        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
         StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.line(p.getX() + .45,p.getY() + .52,p.getX() + .59,p.getY() + .43);
-        StdDraw.line(p.getX() + .45,p.getY() + .52,p.getX() + .59,p.getY() + .62);
+        StdDraw.setPenColor(StdDraw.GRAY);
         StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
         StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
     }
 
-	  public static void vert_RightMover(Position p) {
-        StdDraw.setPenColor(StdDraw.BLACK);
+    public static void closed_HorSwitch(Position p) {
+        StdDraw.setPenColor(StdDraw.GRAY);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
-        StdDraw.setPenColor(orange);
+        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
         StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
         StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.line(p.getX() + .59,p.getY() + .52,p.getX() + .45,p.getY() + .43);
-        StdDraw.line(p.getX() + .59,p.getY() + .52,p.getX() + .45,p.getY() + .62);
-        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
-        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
+        StdDraw.setPenColor(StdDraw.GRAY);
+        StdDraw.line(p.getX() + .845,p.getY() + .52,p.getX() + .75,p.getY() + .52);
+        StdDraw.line(p.getX() + .195,p.getY() + .52,p.getX() + .29,p.getY() + .52);
     }
 
-	  public static void vert_DownMover(Position p) {
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.40);
-        StdDraw.setPenColor(darkOrange);
-        StdDraw.filledCircle(p.getX() + .52,p.getY() + .52,.325);
+    public static void closed_Port(Position p) {
+        StdDraw.setPenColor(StdDraw.GRAY);
+        StdDraw.filledCircle(p.getX() + .52, p.getY() + .52, .40);
+        StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+        StdDraw.filledCircle(p.getX() + .52, p.getY() + .52, .325);
         StdDraw.setPenRadius(.0145);
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.line(p.getX() + .52,p.getY() + .845,p.getX() + .52,p.getY() + .75);
-        StdDraw.line(p.getX() + .52,p.getY() + .195,p.getX() + .52,p.getY() + .29);
-        StdDraw.line(p.getX() + .52,p.getY() + .450,p.getX() + .40,p.getY() + .59);
-        StdDraw.line(p.getX() + .52,p.getY() + .450,p.getX() + .64,p.getY() + .59);
+        StdDraw.setPenColor(StdDraw.GRAY);
+        StdDraw.line(p.getX() + .36,p.getY() + .35,p.getX() + .67,p.getY() + .67);
+        StdDraw.line(p.getX() + .36,p.getY() + .67,p.getX() + .67,p.getY() + .35);
     }
 
-	  public static void initialiseBoard(int R, int C) {
-        StdDraw.setCanvasSize(100 * R,100 * C);
-        StdDraw.setXscale(0, R);
-        StdDraw.setYscale(0, C);
+
+    public static void main(String[] args) {
+    
+        gamepiecesGUI.initialiseCanvas(10,10);
+        gamepiecesGUI.player(new Position(5,5));
     }
 
-    public static void drawborder(int R,int C) {
-        for (double n = .525; n < R; n++) {
-            for (double m = .525; m < C; m++) {
-                StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
-                StdDraw.filledSquare(n, m, .525);
-              }
-        }
 
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.setPenRadius(.0160);
-        StdDraw.line(0,0,0,C);
-        StdDraw.line(0,C,R,C);
-        StdDraw.line(R,C,R,0);
-        StdDraw.line(R,0,0,0);
-    }
 }
