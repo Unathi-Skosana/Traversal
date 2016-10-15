@@ -12,4 +12,5 @@
 
   Create main class Traversal 
 
+  Implement game logic methods 
     
