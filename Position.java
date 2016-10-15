@@ -19,4 +19,6 @@ public class Position {
 
     public void decrementY() { y = y - 1; }
 
+    public boolean isEquals(Position p) { return (p.getX() == this.x && p.getY() == this.y); }
+
 }
