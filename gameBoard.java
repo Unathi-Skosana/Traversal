@@ -17,7 +17,7 @@ public class gameBoard {
 
     public void add_gamePiece(gamePiece piece) {
 
-      if (piece.getSymbol().equals("s")) { player = piece; }
+      if ((piece.getSymbol()).equals("s")) { player = piece; }
           
           gamePieces.add(piece);
     }
