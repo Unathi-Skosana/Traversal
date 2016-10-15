@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class gameBoard {
 
-  // Use a HashMap to represent the gameBoard object.
 
     public final int boardWidth;
     public final int boardHeight;
@@ -22,9 +21,103 @@ public class gameBoard {
           gamePieces.add(piece);
     }
 
+    public void move(char KeyPressed) {
+        switch(KeyPressed) {
+          case 'a':
+            loadEventsFromHorMove();
+            player.getPosition().decrementX();
+            break;
+          case 'd':
+            loadEventsFromHorMove();
+            player.getPosition().incrementX();
+            break;
+          case 'w':
+            loadEventsFromVertMove();
+            player.getPosition().incrementY();
+            break;
+          case 's':
+            loadEventsFromVertMove();
+            player.getPosition().decrementY();
+            break;
+        }
+    
+    }
 
-    public void draw_gamePiece(Position p, String symbol) { // Move to the GUI object that represents the gameBoard object.
+    private void loadEventsFromHorMove() {
+        HorMovers();
+        toggleHorSwitches();
+    }
 
+    private void loadEventsFromVertMove() {
+        VertMovers();
+        toggleVertSwitches();
+    }
+
+    private void HorMovers() {        
+       for (gamePiece piece: this.gamePieces) {
+           switch(piece.getSymbol()) {
+                case "l":
+                  piece.getPosition().decrementX();
+                  break;
+                case "r":
+                  piece.getPosition().incrementX();
+                  break;
+                case "d":
+                  piece.getPosition().decrementY();
+                  break;
+                case "u":
+                  piece.getPosition().incrementY();
+                  break;
+                default:
+                  break;
+             }
+        }
+    }
+
+    private void VertMovers() {
+       for (gamePiece piece: this.gamePieces) {
+           switch(piece.getSymbol()) {
+                case "l":
+                  piece.getPosition().decrementX();
+                  break;
+                case "r":
+                  piece.getPosition().incrementX();
+                  break;
+                case "d":
+                  piece.getPosition().decrementY();
+                  break;
+                case "u":
+                  piece.getPosition().incrementY();
+                  break;
+                default:
+                  break;          
+             }
+       }
+    }
+
+    private void toggleHorSwitches() {
+        for (gamePiece piece: this.gamePieces) {
+            if(piece.getSymbol().equals("h")) {
+                piece.setSymbol("H");
+            }  
+            else if (piece.getSymbol().equals("H")) {    
+                piece.setSymbol("h");
+            }
+        }
+    }
+
+    private void toggleVertSwitches() {
+        for (gamePiece piece: this.gamePieces) {
+            if(piece.getSymbol().equals("v")) {
+                piece.setSymbol("V");
+            }  
+            else if (piece.getSymbol().equals("V")) {    
+                piece.setSymbol("v");
+            }
+        } 
+    }
+
+   public void draw_gamePiece(Position p, String symbol) { // Move to the GUI object that represents the gameBoard object.
       switch(symbol) {
         case "s":
           gamepiecesGUI.player(p);
@@ -89,8 +182,6 @@ public class gameBoard {
 
     public void drawBoard(ArrayList<gamePiece> board) { // Move to main client Traversal
 
-      // setup board here
-
       for (gamePiece piece : board) {
           String symbol = piece.getSymbol();
           Position p = piece.getPosition();
@@ -98,4 +189,19 @@ public class gameBoard {
       }
     }
 
+    public boolean isPlayerOnKey() {
+        
+        for (gamePiece piece : this.gamePieces) {
+        
+            if(piece.getSymbol().equals("k")) {   
+                  return (player.getPosition()).isEquals(piece.getPosition());
+            }
+        }
+
+        return false;
+    }
+
+      private gamePiece getPieceByPosition() {
+
+      }
 }
