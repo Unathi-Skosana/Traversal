@@ -16,11 +16,10 @@ public class gameBoard {
     }
 
     public void add_gamePiece(gamePiece piece) {
-        
-        gamePieces.add(piece);
-        
-        // add the game piece to whatever implementation,
-        //  you are using to represent gameBoard
+
+      if (piece.getSymbol().equals("s")) { player = piece; }
+          
+          gamePieces.add(piece);
     }
 
 
@@ -37,57 +36,58 @@ public class gameBoard {
           gamepiecesGUI.wall(p);
           break;
         case "u":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.hor_UpMover(p);
           break;
         case "d":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.hor_DownMover(p);
           break;
         case "l":
-          gamepiecesGUI.hormovp(p);
+          gamepiecesGUI.hor_LeftMover(p);
           break;
         case "r":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.hor_RightMover(p);
           break;
         case "U":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.vert_UpMover(p);
           break;
          case "D":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.vert_DownMover(p);
           break;
         case "R":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.vert_RightMover(p);
           break;
         case "h":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.open_HorSwitch(p);
           break;
         case "H":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.closed_HorSwitch(p);
           break;
         case "v":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.open_VertSwitch(p);
           break;
         case "V":
-          gamepiecesGUI.hormov(p);
+          gamepiecesGUI.closed_VertSwitch(p);
           break;
         case "k":
-          gamepiecesGUI.key(p);
+          gamepiecesGUI.open_Key(p);
+          break;
+        case "K":
+          gamepiecesGUI.closed_Key(p);
           break;
         case "p":
-          gamepiecesGUI.closed_port(p);
+          gamepiecesGUI.closed_Port(p);
           break;
         case "P":
-          gamepiecesGUI.open_port(p);
+          gamepiecesGUI.open_Port(p);
           break;
         default:
           // throw an error
           break;
       }
 
-      // draw gamePiece by using the graphics library.
-      
     }
 
-    public void drawBoard(ArrayList<gamePiece> board) {
+    public void drawBoard(ArrayList<gamePiece> board) { // Move to main client Traversal
 
       // setup board here
 
@@ -96,7 +96,6 @@ public class gameBoard {
           Position p = piece.getPosition();
           draw_gamePiece(p, symbol);
       }
-    
     }
 
 }
