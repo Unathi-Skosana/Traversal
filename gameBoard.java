@@ -46,11 +46,13 @@ public class gameBoard {
     private void loadEventsFromHorMove() {
         HorMovers();
         toggleHorSwitches();
+        togglePorts();
     }
 
     private void loadEventsFromVertMove() {
         VertMovers();
         toggleVertSwitches();
+        togglePorts();
     }
 
     private void HorMovers() {        
@@ -189,19 +191,61 @@ public class gameBoard {
       }
     }
 
-    public boolean isPlayerOnKey() {
-        
-        for (gamePiece piece : this.gamePieces) {
-        
-            if(piece.getSymbol().equals("k")) {   
-                  return (player.getPosition()).isEquals(piece.getPosition());
-            }
-        }
-
-        return false;
-    }
-
-      private gamePiece getPieceByPosition() {
+    public void togglePorts() {
+    
+      if(isPlayerOnKey()) {
+          
+         for (gamePiece piece : this.gamePieces) {
+         
+              if (piece.getSymbol().equals("p"))      { piece.setSymbol("P"); }  
+              
+              else if (piece.getSymbol().equals("P")) { piece.setSymbol("p"); }
+         }
 
       }
+    
+    }
+    
+    public boolean isPlayerOnKey() {
+        gamePiece possibleKey = gamePieceAt(player.getPosition());
+
+        if(possibleKey.getSymbol().equals("k")) {
+            possibleKey.setSymbol("K");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private gamePiece gamePieceAt(Position p) {
+          for (gamePiece piece : this.gamePieces) {      
+              if(piece.getPosition().isEquals(p) && !piece.getSymbol().equals("s")) {
+                  return piece;
+              }
+          }
+          return null;
+    }
+
+    private boolean isPlayerDead() {
+
+        gamePiece currentPiece = gamePieceAt(player.getPosition());
+
+        if (currentPiece.getSymbol().equals("D") || currentPiece.getSymbol().equals("d"))      { return false; }
+        else if (currentPiece.getSymbol().equals("U") || currentPiece.getSymbol().equals("u")) { return false; }
+        else if (currentPiece.getSymbol().equals("L") || currentPiece.getSymbol().equals("l")) { return false; }
+        else if (currentPiece.getSymbol().equals("R") || currentPiece.getSymbol().equals("r")) { return false; }
+        else if (currentPiece.getSymbol().equals("P") || currentPiece.getSymbol().equals("x")) { return false; }
+        else if (currentPiece.getSymbol().equals("H") || currentPiece.getSymbol().equals("V")) { return false; }
+        else                                                                                   { return  true; }
+
+    }
+
+    private boolean isplayerOnTarget() {
+      
+      gamePiece possibleTarget = gamePieceAt(player.getPosition());
+
+      return possibleTarget.getSymbol().equals("t");
+    
+    }
+
 }
