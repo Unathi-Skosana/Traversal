@@ -1,9 +1,9 @@
 public class gamePiece {
 
-    private String symbol;
+    private Char symbol;
     private Position position;
 
-    public gamePiece(String symbol, Position position) {
+    public gamePiece(Char symbol, Position position) {
         this.position = position;
         this.symbol = symbol;
     }
@@ -12,6 +12,6 @@ public class gamePiece {
 
     public Position getPosition() { return position; }
 
-    public void setSymbol(String newSymbol) { this.symbol = newSymbol; }
+    public void setSymbol(Char newSymbol) { this.symbol = newSymbol; }
 
 }

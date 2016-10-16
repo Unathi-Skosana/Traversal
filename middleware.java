@@ -15,7 +15,7 @@ public class middleware {
         }
     }
 
-    public static void parseArgs(String inputfile) throws FileNotFoundException { // move to main client Traversal.java
+    public static gameBoard parseArgs(String inputfile) throws FileNotFoundException { // move to main client Traversal.java
     
       Scanner in = new Scanner(new File(inputfile));
       
@@ -33,15 +33,20 @@ public class middleware {
           String currentLine = in.nextLine();
 
           for (int j = 0; j < boardHeight; j++) {
-              String symbol   = currentLine.substring(j,j + 1);
-              Position p      = new Position(i, j);
-              gamePiece piece = new gamePiece(symbol, p);
-              traversalBoard.add_gamePiece(piece);
+
+              if (!currentLine.charAt(j) == '.') {
+                 Char symbol   = currentLine.charAt(j);
+                 Position p      = new Position(i, j);
+                 gamePiece piece = new gamePiece(symbol, p);
+                 traversalBoard.add_gamePiece(piece);
+              }
           }
       }
+
+       return traversalBoard;
     }
 
-    public static void writeToFile() {
+    public static void writeToConsole() {
     
       /* Fill code here */
     

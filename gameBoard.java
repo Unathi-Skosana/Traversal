@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class gameBoard {
 
-
     public final int boardWidth;
     public final int boardHeight;
     public gamePiece player;
@@ -16,7 +15,7 @@ public class gameBoard {
 
     public void add_gamePiece(gamePiece piece) {
 
-      if ((piece.getSymbol()).equals("s")) { player = piece; }
+      if (piece.getSymbol() == 's') { player = piece; }
           
           gamePieces.add(piece);
     }
@@ -58,16 +57,16 @@ public class gameBoard {
     private void HorMovers() {        
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
-                case "l":
+                case 'l':
                   piece.getPosition().decrementX();
                   break;
-                case "r":
+                case 'r':
                   piece.getPosition().incrementX();
                   break;
-                case "d":
+                case 'd':
                   piece.getPosition().decrementY();
                   break;
-                case "u":
+                case 'u':
                   piece.getPosition().incrementY();
                   break;
                 default:
@@ -79,16 +78,16 @@ public class gameBoard {
     private void VertMovers() {
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
-                case "l":
+                case 'l':
                   piece.getPosition().decrementX();
                   break;
-                case "r":
+                case 'r':
                   piece.getPosition().incrementX();
                   break;
-                case "d":
+                case 'd':
                   piece.getPosition().decrementY();
                   break;
-                case "u":
+                case 'u':
                   piece.getPosition().incrementY();
                   break;
                 default:
@@ -99,80 +98,80 @@ public class gameBoard {
 
     private void toggleHorSwitches() {
         for (gamePiece piece: this.gamePieces) {
-            if(piece.getSymbol().equals("h")) {
-                piece.setSymbol("H");
+            if(piece.getSymbol() == 'h') {
+                piece.setSymbol('H');
             }  
-            else if (piece.getSymbol().equals("H")) {    
-                piece.setSymbol("h");
+            else if (piece.getSymbol() == 'h') {    
+                piece.setSymbol('h');
             }
         }
     }
 
     private void toggleVertSwitches() {
         for (gamePiece piece: this.gamePieces) {
-            if(piece.getSymbol().equals("v")) {
-                piece.setSymbol("V");
+            if(piece.getSymbol() == 'v') {
+                piece.setSymbol('V');
             }  
-            else if (piece.getSymbol().equals("V")) {    
-                piece.setSymbol("v");
+            else if (piece.getSymbol() == equals('V')) {    
+                piece.setSymbol('v');
             }
         } 
     }
 
-   public void draw_gamePiece(Position p, String symbol) { // Move to the GUI object that represents the gameBoard object.
+   private void draw_gamePiece(Position p, String symbol) { 
       switch(symbol) {
-        case "s":
+        case 's':
           gamepiecesGUI.player(p);
           break;
-        case "t":
+        case 't':
           gamepiecesGUI.target(p);
           break;
-        case "x":
+        case 'x':
           gamepiecesGUI.wall(p);
           break;
-        case "u":
+        case 'u':
           gamepiecesGUI.hor_UpMover(p);
           break;
-        case "d":
+        case 'd':
           gamepiecesGUI.hor_DownMover(p);
           break;
-        case "l":
+        case 'l':
           gamepiecesGUI.hor_LeftMover(p);
           break;
-        case "r":
+        case 'r':
           gamepiecesGUI.hor_RightMover(p);
           break;
-        case "U":
+        case 'U':
           gamepiecesGUI.vert_UpMover(p);
           break;
-         case "D":
+         case 'D':
           gamepiecesGUI.vert_DownMover(p);
           break;
-        case "R":
+        case 'R':
           gamepiecesGUI.vert_RightMover(p);
           break;
-        case "h":
+        case 'h':
           gamepiecesGUI.open_HorSwitch(p);
           break;
-        case "H":
+        case 'H':
           gamepiecesGUI.closed_HorSwitch(p);
           break;
-        case "v":
+        case 'v':
           gamepiecesGUI.open_VertSwitch(p);
           break;
-        case "V":
+        case 'V':
           gamepiecesGUI.closed_VertSwitch(p);
           break;
-        case "k":
+        case 'k':
           gamepiecesGUI.open_Key(p);
           break;
-        case "K":
+        case 'K':
           gamepiecesGUI.closed_Key(p);
           break;
-        case "p":
+        case 'p':
           gamepiecesGUI.closed_Port(p);
           break;
-        case "P":
+        case 'P':
           gamepiecesGUI.open_Port(p);
           break;
         default:
@@ -182,35 +181,35 @@ public class gameBoard {
 
     }
 
-    public void drawBoard(ArrayList<gamePiece> board) { // Move to main client Traversal
+    public void drawBoard() { // Move to main client Traversal
 
-      for (gamePiece piece : board) {
-          String symbol = piece.getSymbol();
+      for (gamePiece piece : this.gamePieces) {
+          Char symbol = piece.getSymbol();
           Position p = piece.getPosition();
           draw_gamePiece(p, symbol);
       }
     }
 
-    public void togglePorts() {
+    private void togglePorts() {
     
       if(isPlayerOnKey()) {
           
          for (gamePiece piece : this.gamePieces) {
          
-              if (piece.getSymbol().equals("p"))      { piece.setSymbol("P"); }  
+              if (piece.getSymbol() == 'p')      { piece.setSymbol('P'); }  
               
-              else if (piece.getSymbol().equals("P")) { piece.setSymbol("p"); }
+              else if (piece.getSymbol() == equals('P')) { piece.setSymbol('p'); }
          }
 
       }
     
     }
     
-    public boolean isPlayerOnKey() {
+    private boolean isPlayerOnKey() {
         gamePiece possibleKey = gamePieceAt(player.getPosition());
 
-        if(possibleKey.getSymbol().equals("k")) {
-            possibleKey.setSymbol("K");
+        if(possibleKey.getSymbol() == 'k') {
+            possibleKey.setSymbol('K');
             return true;
         } else {
             return false;
@@ -219,14 +218,14 @@ public class gameBoard {
 
     private gamePiece gamePieceAt(Position p) {
           for (gamePiece piece : this.gamePieces) {      
-              if(piece.getPosition().isEquals(p) && !piece.getSymbol().equals("s")) {
+              if(piece.getPosition().isEquals(p) && !piece.getSymbol() == 's') {
                   return piece;
               }
           }
           return null;
     }
 
-    private boolean isPlayerDead() {
+    public boolean isPlayerDead() {
 
         gamePiece currentPiece = gamePieceAt(player.getPosition());
 
@@ -240,11 +239,11 @@ public class gameBoard {
 
     }
 
-    private boolean isplayerOnTarget() {
+    public boolean hasPlayerWon() {
       
       gamePiece possibleTarget = gamePieceAt(player.getPosition());
 
-      return possibleTarget.getSymbol().equals("t");
+      return possibleTarget.getSymbol() == 't';
     
     }
 
