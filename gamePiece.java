@@ -1,17 +1,17 @@
 public class gamePiece {
 
-    private Char symbol;
+    private char symbol;
     private Position position;
 
-    public gamePiece(Char symbol, Position position) {
+    public gamePiece(char symbol, Position position) {
         this.position = position;
         this.symbol = symbol;
     }
 
-    public String getSymbol() { return symbol; }
+    public char getSymbol() { return symbol; }
 
     public Position getPosition() { return position; }
 
-    public void setSymbol(Char newSymbol) { this.symbol = newSymbol; }
+    public void setSymbol(char newSymbol) { this.symbol = newSymbol; }
 
 }

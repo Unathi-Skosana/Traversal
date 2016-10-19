@@ -5,12 +5,13 @@ public class gameBoard {
     public final int boardWidth;
     public final int boardHeight;
     public gamePiece player;
-    public ArrayList<gamePiece> gamePieces = new ArrayList<gamePiece>();
+    public ArrayList<gamePiece> gamePieces;
 
     public gameBoard(int boardWidth, int boardHeight) {
         
         this.boardHeight = boardHeight;
         this.boardWidth  = boardWidth;
+        gamePieces = new ArrayList<gamePiece>();
     }
 
     public void add_gamePiece(gamePiece piece) {
@@ -23,20 +24,20 @@ public class gameBoard {
     public void move(char KeyPressed) {
         switch(KeyPressed) {
           case 'a':
-            loadEventsFromHorMove();
             player.getPosition().decrementX();
+            loadEventsFromHorMove();
             break;
           case 'd':
-            loadEventsFromHorMove();
             player.getPosition().incrementX();
+            loadEventsFromHorMove();
             break;
           case 'w':
-            loadEventsFromVertMove();
             player.getPosition().incrementY();
+            loadEventsFromVertMove();
             break;
           case 's':
-            loadEventsFromVertMove();
             player.getPosition().decrementY();
+            loadEventsFromVertMove();
             break;
         }
     
@@ -78,16 +79,16 @@ public class gameBoard {
     private void VertMovers() {
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
-                case 'l':
+                case 'R':
                   piece.getPosition().decrementX();
                   break;
-                case 'r':
+                case 'L':
                   piece.getPosition().incrementX();
                   break;
-                case 'd':
+                case 'D':
                   piece.getPosition().decrementY();
                   break;
-                case 'u':
+                case 'U':
                   piece.getPosition().incrementY();
                   break;
                 default:
@@ -112,17 +113,14 @@ public class gameBoard {
             if(piece.getSymbol() == 'v') {
                 piece.setSymbol('V');
             }  
-            else if (piece.getSymbol() == equals('V')) {    
+            else if (piece.getSymbol() == 'V') {    
                 piece.setSymbol('v');
             }
         } 
     }
 
-   private void draw_gamePiece(Position p, String symbol) { 
+   private void draw_gamePiece(Position p, char symbol) { 
       switch(symbol) {
-        case 's':
-          gamepiecesGUI.player(p);
-          break;
         case 't':
           gamepiecesGUI.target(p);
           break;
@@ -174,6 +172,10 @@ public class gameBoard {
         case 'P':
           gamepiecesGUI.open_Port(p);
           break;
+        case 's':
+          gamepiecesGUI.player(p);
+          break;
+
         default:
           // throw an error
           break;
@@ -182,12 +184,13 @@ public class gameBoard {
     }
 
     public void drawBoard() { // Move to main client Traversal
-
+        StdDraw.clear();
       for (gamePiece piece : this.gamePieces) {
-          Char symbol = piece.getSymbol();
+          char symbol = piece.getSymbol();
           Position p = piece.getPosition();
           draw_gamePiece(p, symbol);
       }
+      StdDraw.show(30);
     }
 
     private void togglePorts() {
@@ -198,8 +201,10 @@ public class gameBoard {
          
               if (piece.getSymbol() == 'p')      { piece.setSymbol('P'); }  
               
-              else if (piece.getSymbol() == equals('P')) { piece.setSymbol('p'); }
+              else if (piece.getSymbol() == 'P') { piece.setSymbol('p'); }
          }
+
+         drawBoard();
 
       }
     
@@ -208,7 +213,12 @@ public class gameBoard {
     private boolean isPlayerOnKey() {
         gamePiece possibleKey = gamePieceAt(player.getPosition());
 
-        if(possibleKey.getSymbol() == 'k') {
+        
+        if (possibleKey == null) { 
+            return false;
+        }
+        
+        else if(possibleKey.getSymbol() == 'k') {
             possibleKey.setSymbol('K');
             return true;
         } else {
@@ -218,7 +228,7 @@ public class gameBoard {
 
     private gamePiece gamePieceAt(Position p) {
           for (gamePiece piece : this.gamePieces) {      
-              if(piece.getPosition().isEquals(p) && !piece.getSymbol() == 's') {
+              if(piece.getPosition().isEquals(p) && !(piece.getSymbol() == 's')) {
                   return piece;
               }
           }
@@ -229,13 +239,13 @@ public class gameBoard {
 
         gamePiece currentPiece = gamePieceAt(player.getPosition());
 
-        if (currentPiece.getSymbol().equals("D") || currentPiece.getSymbol().equals("d"))      { return false; }
-        else if (currentPiece.getSymbol().equals("U") || currentPiece.getSymbol().equals("u")) { return false; }
-        else if (currentPiece.getSymbol().equals("L") || currentPiece.getSymbol().equals("l")) { return false; }
-        else if (currentPiece.getSymbol().equals("R") || currentPiece.getSymbol().equals("r")) { return false; }
-        else if (currentPiece.getSymbol().equals("P") || currentPiece.getSymbol().equals("x")) { return false; }
-        else if (currentPiece.getSymbol().equals("H") || currentPiece.getSymbol().equals("V")) { return false; }
-        else                                                                                   { return  true; }
+        if (currentPiece.getSymbol() == 'D' || currentPiece.getSymbol() == 'd')      { return false; }
+        else if (currentPiece.getSymbol() == 'U' || currentPiece.getSymbol() == 'u') { return false; }
+        else if (currentPiece.getSymbol() == 'L' || currentPiece.getSymbol() == 'l') { return false; }
+        else if (currentPiece.getSymbol() == 'R' || currentPiece.getSymbol() == 'r') { return false; }
+        else if (currentPiece.getSymbol() == 'P' || currentPiece.getSymbol() == 'x') { return false; }
+        else if (currentPiece.getSymbol() == 'H' || currentPiece.getSymbol() == 'V') { return false; }
+        else                                                                         { return  true; }
 
     }
 

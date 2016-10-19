@@ -5,14 +5,14 @@ import java.io.File;
 public class middleware {    
 
     public static char readKeys() {
-        char pressedKey;
+        char pressedKey = '0';
 
-        while(true) {     
-            if(StdDraw.hasNextKeyTyped()) {
+        if(StdDraw.hasNextKeyTyped()) {
                 pressedKey = StdDraw.nextKeyTyped();
-                return pressedKey;
-            }
+          
         }
+
+        return pressedKey;
     }
 
     public static gameBoard parseArgs(String inputfile) throws FileNotFoundException { // move to main client Traversal.java
@@ -34,8 +34,8 @@ public class middleware {
 
           for (int j = 0; j < boardHeight; j++) {
 
-              if (!currentLine.charAt(j) == '.') {
-                 Char symbol   = currentLine.charAt(j);
+              if (!(currentLine.charAt(j) == '.')) {
+                 char symbol   = currentLine.charAt(j);
                  Position p      = new Position(i, j);
                  gamePiece piece = new gamePiece(symbol, p);
                  traversalBoard.add_gamePiece(piece);

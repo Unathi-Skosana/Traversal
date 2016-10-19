@@ -270,9 +270,9 @@ public class gamepiecesGUI {
 
     public static void main(String[] args) {
     
-        gamepiecesGUI.initialiseCanvas(10,10);
-        gamepiecesGUI.player(new Position(5,5));
+    initialiseCanvas(5,5);
+    gamepiecesGUI.player(new Position(2,2));
+    
     }
-
 
 }
