@@ -13,5 +13,9 @@ public class gamePiece {
     public Position getPosition() { return position; }
 
     public void setSymbol(char newSymbol) { this.symbol = newSymbol; }
-
+    
+    public void wrapAround(int wrap) {
+    
+    
+    }
 }

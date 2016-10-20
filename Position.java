@@ -11,6 +11,10 @@ public class Position {
 
     public int getY() { return y; }
 
+    public void setX(int x) { this.x = x; }
+
+    public void setY(int y) { this.y = y; }
+
     public void incrementX() { x = x + 1; }
 
     public void incrementY() { y = y + 1; }
@@ -18,7 +22,7 @@ public class Position {
     public void decrementX() { x = x - 1; }
 
     public void decrementY() { y = y - 1; }
-
+    
     public boolean isEquals(Position p) { return (p.getX() == this.x && p.getY() == this.y); }
 
 }

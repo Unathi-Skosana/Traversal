@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class gameBoard {
 
-    public final int boardWidth;
-    public final int boardHeight;
+    private final int boardWidth;
+    private final int boardHeight;
     public gamePiece player;
-    public ArrayList<gamePiece> gamePieces;
+    private ArrayList<gamePiece> gamePieces;
 
     public gameBoard(int boardWidth, int boardHeight) {
         
@@ -14,30 +14,37 @@ public class gameBoard {
         gamePieces = new ArrayList<gamePiece>();
     }
 
+    public int getBoardHeight() {
+      return boardHeight;
+    }
+
+    public int getBoardWidth() {
+      return boardWidth;
+    }
+
     public void add_gamePiece(gamePiece piece) {
 
       if (piece.getSymbol() == 's') { player = piece; }
-          
-          gamePieces.add(piece);
+        else { gamePieces.add(piece); }
     }
 
     public void move(char KeyPressed) {
         switch(KeyPressed) {
           case 'a':
-            player.getPosition().decrementX();
             loadEventsFromHorMove();
+            player.getPosition().decrementX();
             break;
           case 'd':
-            player.getPosition().incrementX();
             loadEventsFromHorMove();
+            player.getPosition().incrementX();
             break;
           case 'w':
-            player.getPosition().incrementY();
             loadEventsFromVertMove();
+            player.getPosition().incrementY();
             break;
           case 's':
-            player.getPosition().decrementY();
             loadEventsFromVertMove();
+            player.getPosition().decrementY();
             break;
         }
     
@@ -102,7 +109,7 @@ public class gameBoard {
             if(piece.getSymbol() == 'h') {
                 piece.setSymbol('H');
             }  
-            else if (piece.getSymbol() == 'h') {    
+            else if (piece.getSymbol() == 'H') {    
                 piece.setSymbol('h');
             }
         }
@@ -119,77 +126,76 @@ public class gameBoard {
         } 
     }
 
-   private void draw_gamePiece(Position p, char symbol) { 
-      switch(symbol) {
-        case 't':
-          gamepiecesGUI.target(p);
-          break;
-        case 'x':
-          gamepiecesGUI.wall(p);
-          break;
-        case 'u':
-          gamepiecesGUI.hor_UpMover(p);
-          break;
-        case 'd':
-          gamepiecesGUI.hor_DownMover(p);
-          break;
-        case 'l':
-          gamepiecesGUI.hor_LeftMover(p);
-          break;
-        case 'r':
-          gamepiecesGUI.hor_RightMover(p);
-          break;
-        case 'U':
-          gamepiecesGUI.vert_UpMover(p);
-          break;
-         case 'D':
-          gamepiecesGUI.vert_DownMover(p);
-          break;
-        case 'R':
-          gamepiecesGUI.vert_RightMover(p);
-          break;
-        case 'h':
-          gamepiecesGUI.open_HorSwitch(p);
-          break;
-        case 'H':
-          gamepiecesGUI.closed_HorSwitch(p);
-          break;
-        case 'v':
-          gamepiecesGUI.open_VertSwitch(p);
-          break;
-        case 'V':
-          gamepiecesGUI.closed_VertSwitch(p);
-          break;
-        case 'k':
-          gamepiecesGUI.open_Key(p);
-          break;
-        case 'K':
-          gamepiecesGUI.closed_Key(p);
-          break;
-        case 'p':
-          gamepiecesGUI.closed_Port(p);
-          break;
-        case 'P':
-          gamepiecesGUI.open_Port(p);
-          break;
-        case 's':
-          gamepiecesGUI.player(p);
-          break;
-
-        default:
-          // throw an error
-          break;
-      }
-
+    private void draw_gamePiece(Position p, char symbol) { 
+        switch(symbol) {
+            case 't':
+                gamepiecesGUI.target(p);
+                break;
+            case 'x':
+                gamepiecesGUI.wall(p);
+                break;
+            case 'u':
+                gamepiecesGUI.hor_UpMover(p);
+                break;
+            case 'd':
+                gamepiecesGUI.hor_DownMover(p);
+                break;
+            case 'l':
+                gamepiecesGUI.hor_LeftMover(p);
+                break;
+            case 'r':
+                gamepiecesGUI.hor_RightMover(p);
+                break;
+            case 'U':
+                gamepiecesGUI.vert_UpMover(p);
+                break;
+            case 'D':
+                gamepiecesGUI.vert_DownMover(p);
+                break;
+            case 'R':
+                gamepiecesGUI.vert_RightMover(p);
+                break;
+            case 'h':
+                gamepiecesGUI.open_HorSwitch(p);
+                break;
+            case 'H':
+                gamepiecesGUI.closed_HorSwitch(p);
+                break;
+            case 'v':
+                gamepiecesGUI.open_VertSwitch(p);
+                break;
+            case 'V':
+                gamepiecesGUI.closed_VertSwitch(p);
+                break;
+            case 'k':
+                gamepiecesGUI.open_Key(p);
+                break;
+            case 'K':
+                gamepiecesGUI.closed_Key(p);
+                break;
+            case 'p':
+                gamepiecesGUI.closed_Port(p);
+                break;
+            case 'P':
+                gamepiecesGUI.open_Port(p);
+                break;
+            case 's':
+                gamepiecesGUI.player(p);
+                break;
+            default:
+                break;
+        }
     }
 
-    public void drawBoard() { // Move to main client Traversal
+    public void drawBoard() { 
         StdDraw.clear();
       for (gamePiece piece : this.gamePieces) {
           char symbol = piece.getSymbol();
           Position p = piece.getPosition();
           draw_gamePiece(p, symbol);
+          
       }
+      draw_gamePiece(player.getPosition(), 's'); //  Overlaying the player piece over every icon.
       StdDraw.show(30);
     }
 
@@ -212,13 +218,10 @@ public class gameBoard {
     
     private boolean isPlayerOnKey() {
         gamePiece possibleKey = gamePieceAt(player.getPosition());
-
         
         if (possibleKey == null) { 
             return false;
-        }
-        
-        else if(possibleKey.getSymbol() == 'k') {
+        } else if(possibleKey.getSymbol() == 'k') {
             possibleKey.setSymbol('K');
             return true;
         } else {
@@ -238,22 +241,26 @@ public class gameBoard {
     public boolean isPlayerDead() {
 
         gamePiece currentPiece = gamePieceAt(player.getPosition());
-
-        if (currentPiece.getSymbol() == 'D' || currentPiece.getSymbol() == 'd')      { return false; }
-        else if (currentPiece.getSymbol() == 'U' || currentPiece.getSymbol() == 'u') { return false; }
-        else if (currentPiece.getSymbol() == 'L' || currentPiece.getSymbol() == 'l') { return false; }
-        else if (currentPiece.getSymbol() == 'R' || currentPiece.getSymbol() == 'r') { return false; }
-        else if (currentPiece.getSymbol() == 'P' || currentPiece.getSymbol() == 'x') { return false; }
-        else if (currentPiece.getSymbol() == 'H' || currentPiece.getSymbol() == 'V') { return false; }
-        else                                                                         { return  true; }
+        if (currentPiece == null)                                                    { return false; }      
+        else if (currentPiece.getSymbol() == 'D' || currentPiece.getSymbol() == 'd') { return true;  }
+        else if (currentPiece.getSymbol() == 'U' || currentPiece.getSymbol() == 'u') { return true;  }
+        else if (currentPiece.getSymbol() == 'L' || currentPiece.getSymbol() == 'l') { return true;  }
+        else if (currentPiece.getSymbol() == 'R' || currentPiece.getSymbol() == 'r') { return true;  }
+        else if (currentPiece.getSymbol() == 'P' || currentPiece.getSymbol() == 'x') { return true;  }
+        else if (currentPiece.getSymbol() == 'H' || currentPiece.getSymbol() == 'V') { return true;  }
+        else                                                                         { return false; }
 
     }
 
+    public ArrayList<gamePiece> getGamePiecesList() {
+        return gamePieces;
+    }
     public boolean hasPlayerWon() {
       
       gamePiece possibleTarget = gamePieceAt(player.getPosition());
 
-      return possibleTarget.getSymbol() == 't';
+      if (possibleTarget == null) { return false; }
+      else { return possibleTarget.getSymbol() == 't'; }
     
     }
 

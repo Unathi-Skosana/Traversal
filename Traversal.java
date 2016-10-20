@@ -10,10 +10,9 @@ public class Traversal {
 
     public void play() {
     
-      gamepiecesGUI.initialiseCanvas(3, 3);
+      gamepiecesGUI.initialiseCanvas(traversalBoard.getBoardWidth(), traversalBoard.getBoardHeight());
 
-      while (true) {
-      
+      while (!traversalBoard.isPlayerDead() && !traversalBoard.hasPlayerWon()) {
           traversalBoard.move(middleware.readKeys());
           traversalBoard.drawBoard();
       }

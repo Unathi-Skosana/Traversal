@@ -36,7 +36,7 @@ public class middleware {
 
               if (!(currentLine.charAt(j) == '.')) {
                  char symbol   = currentLine.charAt(j);
-                 Position p      = new Position(i, j);
+                 Position p      = new Position(j, boardHeight - i - 1);
                  gamePiece piece = new gamePiece(symbol, p);
                  traversalBoard.add_gamePiece(piece);
               }
