@@ -32,19 +32,25 @@ public class gameBoard {
         switch(KeyPressed) {
           case 'a':
             loadEventsFromHorMove();
-            player.getPosition().decrementX();
+            if (!(player.getPosition().getX() == 0)) {
+                player.getPosition().decrementX();
+            }
             break;
           case 'd':
             loadEventsFromHorMove();
-            player.getPosition().incrementX();
+            if (!(player.getPosition().getX() == boardWidth - 1)) {
+                player.getPosition().incrementX();
+            }
             break;
           case 'w':
             loadEventsFromVertMove();
-            player.getPosition().incrementY();
+            if (player.getPosition().getY() == boardHeight - 1) { player.getPosition().setY(0); }
+            else { player.getPosition().incrementY(); }
             break;
           case 's':
             loadEventsFromVertMove();
-            player.getPosition().decrementY();
+            if (player.getPosition().getY() == 0) { player.getPosition().setY(boardHeight - 1); }
+            else { player.getPosition().decrementY(); }
             break;
         }
     
