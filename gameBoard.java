@@ -31,26 +31,26 @@ public class gameBoard {
     public void move(char KeyPressed) {
         switch(KeyPressed) {
           case 'a':
-            loadEventsFromHorMove();
             if (!(player.getPosition().getX() == 0)) {
+                loadEventsFromHorMove();
                 player.getPosition().decrementX();
             }
             break;
           case 'd':
-            loadEventsFromHorMove();
             if (!(player.getPosition().getX() == boardWidth - 1)) {
+                loadEventsFromHorMove();
                 player.getPosition().incrementX();
             }
             break;
           case 'w':
             loadEventsFromVertMove();
             if (player.getPosition().getY() == boardHeight - 1) { player.getPosition().setY(0); }
-            else { player.getPosition().incrementY(); }
+            else                                                { player.getPosition().incrementY(); }
             break;
           case 's':
             loadEventsFromVertMove();
             if (player.getPosition().getY() == 0) { player.getPosition().setY(boardHeight - 1); }
-            else { player.getPosition().decrementY(); }
+            else                                  { player.getPosition().decrementY(); }
             break;
         }
     
@@ -72,16 +72,20 @@ public class gameBoard {
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
                 case 'l':
-                  piece.getPosition().decrementX();
+                if(piece.getPosition().getX() == 0) { piece.getPosition().setX(boardWidth - 1); }
+                else                                { piece.getPosition().decrementX();         }
                   break;
                 case 'r':
-                  piece.getPosition().incrementX();
+                if(piece.getPosition().getX() == boardWidth - 1) { piece.getPosition().setX(0);      }
+                else                                             { piece.getPosition().incrementX(); }
                   break;
                 case 'd':
-                  piece.getPosition().decrementY();
+                 if(piece.getPosition().getY() == 0) { piece.getPosition().setY(boardHeight - 1); }
+                 else                                { piece.getPosition().decrementY();          }
                   break;
                 case 'u':
-                  piece.getPosition().incrementY();
+                if(piece.getPosition().getY() == boardHeight - 1) { piece.getPosition().setY(0);      }
+                else                                              { piece.getPosition().incrementY(); }
                   break;
                 default:
                   break;
@@ -92,20 +96,24 @@ public class gameBoard {
     private void VertMovers() {
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
-                case 'R':
-                  piece.getPosition().decrementX();
-                  break;
                 case 'L':
-                  piece.getPosition().incrementX();
+                if(piece.getPosition().getX() == 0) { piece.getPosition().setX(boardWidth - 1); }
+                else                                { piece.getPosition().decrementX();         }
+                  break;
+                case 'R':
+                if(piece.getPosition().getX() == boardWidth - 1) { piece.getPosition().setX(0);      }
+                else                                             { piece.getPosition().incrementX(); }
                   break;
                 case 'D':
-                  piece.getPosition().decrementY();
+                 if(piece.getPosition().getY() == 0) { piece.getPosition().setY(boardHeight - 1); }
+                 else                                { piece.getPosition().decrementY();          }
                   break;
                 case 'U':
-                  piece.getPosition().incrementY();
+                if(piece.getPosition().getY() == boardHeight - 1) { piece.getPosition().setY(0);      }
+                else                                              { piece.getPosition().incrementY(); }
                   break;
                 default:
-                  break;          
+                  break;
              }
        }
     }

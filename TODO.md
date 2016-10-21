@@ -15,3 +15,8 @@
   Implement game logic methods 
   
   Fix game piece mappings.
+  
+  Implement sound functionality.
+
+  Implement more functionality like prompting to repeat a level after failure or
+  continue to the next level after completing a level.

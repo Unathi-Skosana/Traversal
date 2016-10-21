@@ -14,8 +14,4 @@ public class gamePiece {
 
     public void setSymbol(char newSymbol) { this.symbol = newSymbol; }
     
-    public void wrapAround(int wrap) {
-    
-    
-    }
 }

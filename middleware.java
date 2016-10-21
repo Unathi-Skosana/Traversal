@@ -21,18 +21,18 @@ public class middleware {
       
       /* Fill code here */
       
-      int boardHeight = in.nextInt();
+      int boardWidth = in.nextInt();
                         in.hasNext(" "); 
-      int boardWidth  = in.nextInt();
+      int boardHeight  = in.nextInt();
                         in.nextLine();
 
       gameBoard traversalBoard = new gameBoard(boardWidth, boardHeight);
 
-      for (int i = 0; i < boardWidth; i++) {
+      for (int i = 0; i < boardHeight; i++) {
 
           String currentLine = in.nextLine();
 
-          for (int j = 0; j < boardHeight; j++) {
+          for (int j = 0; j < boardWidth; j++) {
 
               if (!(currentLine.charAt(j) == '.')) {
                  char symbol   = currentLine.charAt(j);
