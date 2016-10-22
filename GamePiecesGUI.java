@@ -1,6 +1,6 @@
 import java.awt.Color;
 
-public class gamepiecesGUI {
+public class GamePiecesGUI {
 
   private static final Color green = new Color(0, 117, 5);
   private static final Color orange = new Color(183, 168, 31);
@@ -266,14 +266,6 @@ public class gamepiecesGUI {
         StdDraw.setPenColor(StdDraw.GRAY);
         StdDraw.line(p.getX() + .36,p.getY() + .35,p.getX() + .67,p.getY() + .67);
         StdDraw.line(p.getX() + .36,p.getY() + .67,p.getX() + .67,p.getY() + .35);
-    }
-
-
-    public static void main(String[] args) {
-    
-    initialiseCanvas(5,5);
-    gamepiecesGUI.player(new Position(2,2));
-    
     }
 
 }

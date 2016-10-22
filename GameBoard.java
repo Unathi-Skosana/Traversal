@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
-public class gameBoard {
+public class GameBoard {
 
     private final int boardWidth;
     private final int boardHeight;
-    public gamePiece player;
-    private ArrayList<gamePiece> gamePieces;
+    public GamePiece player;
+    private ArrayList<GamePiece> GamePieces;
 
-    public gameBoard(int boardWidth, int boardHeight) {
+    public GameBoard(int boardWidth, int boardHeight) {
         this.boardHeight = boardHeight;
         this.boardWidth  = boardWidth;
-        gamePieces = new ArrayList<gamePiece>();
+        GamePieces = new ArrayList<GamePiece>();
     }
 
     public int getBoardHeight() {
@@ -21,9 +21,9 @@ public class gameBoard {
       return boardWidth;
     }
 
-    public void add_gamePiece(gamePiece piece) {
+    public void addGamePiece(GamePiece piece) {
       if (piece.getSymbol() == 's') { player = piece; }
-        else { gamePieces.add(piece); }
+        else { GamePieces.add(piece); }
     }
 
     public void move(char KeyPressed) {
@@ -51,23 +51,22 @@ public class gameBoard {
                 else                                  { player.getPosition().decrementY(); }
                 break;
         }
-    
     }
 
     private void loadEventsFromHorMove() {
-        HorMovers();
-        toggleHorSwitches();
+        horizontalMovers();
+        toggleHorizontalSwitches();
         togglePorts();
     }
 
     private void loadEventsFromVertMove() {
-        VertMovers();
-        toggleVertSwitches();
+        verticalMovers();
+        toggleVerticalSwitches();
         togglePorts();
     }
 
-    private void HorMovers() {        
-       for (gamePiece piece: this.gamePieces) {
+    private void horizontalMovers() {        
+       for (GamePiece piece: this.GamePieces) {
            switch(piece.getSymbol()) {
                 case 'l':
                     if(piece.getPosition().getX() == 1)               { piece.getPosition().setX(boardWidth - 1); }
@@ -91,8 +90,8 @@ public class gameBoard {
         }
     }
 
-    private void VertMovers() {
-       for (gamePiece piece: this.gamePieces) {
+    private void verticalMovers() {
+       for (GamePiece piece: this.GamePieces) {
            switch(piece.getSymbol()) {
                 case 'L':
                     if(piece.getPosition().getX() == 0) { piece.getPosition().setX(boardWidth - 1); }
@@ -116,81 +115,75 @@ public class gameBoard {
        }
     }
 
-    private void toggleHorSwitches() {
-        for (gamePiece piece: this.gamePieces) {
-            if(piece.getSymbol() == 'h') {
-                piece.setSymbol('H');
-            } else if (piece.getSymbol() == 'H') {    
-                piece.setSymbol('h');
-            }
+    private void toggleHorizontalSwitches() {
+        for (GamePiece piece: this.GamePieces) {
+            if(piece.getSymbol() == 'h')       { piece.setSymbol('H');  } 
+            else if (piece.getSymbol() == 'H') {  piece.setSymbol('h'); }
         }
     }
 
-    private void toggleVertSwitches() {
-        for (gamePiece piece: this.gamePieces) {
-            if(piece.getSymbol() == 'v') {
-                piece.setSymbol('V');
-            } else if (piece.getSymbol() == 'V') {    
-                piece.setSymbol('v');
-            }
+    private void toggleVerticalSwitches() {
+        for (GamePiece piece: this.GamePieces) {
+            if(piece.getSymbol() == 'v')       { piece.setSymbol('V'); } 
+            else if (piece.getSymbol() == 'V') { piece.setSymbol('v'); }
         } 
     }
 
-    private void draw_gamePiece(Position p, char symbol) { 
+    private void drawGamePiece(Position p, char symbol) { 
         switch(symbol) {
             case 't':
-                gamepiecesGUI.target(p);
+                GamePiecesGUI.target(p);
                 break;
             case 'x':
-                gamepiecesGUI.wall(p);
+                GamePiecesGUI.wall(p);
                 break;
             case 'u':
-                gamepiecesGUI.hor_UpMover(p);
+                GamePiecesGUI.hor_UpMover(p);
                 break;
             case 'd':
-                gamepiecesGUI.hor_DownMover(p);
+                GamePiecesGUI.hor_DownMover(p);
                 break;
             case 'l':
-                gamepiecesGUI.hor_LeftMover(p);
+                GamePiecesGUI.hor_LeftMover(p);
                 break;
             case 'r':
-                gamepiecesGUI.hor_RightMover(p);
+                GamePiecesGUI.hor_RightMover(p);
                 break;
             case 'U':
-                gamepiecesGUI.vert_UpMover(p);
+                GamePiecesGUI.vert_UpMover(p);
                 break;
             case 'D':
-                gamepiecesGUI.vert_DownMover(p);
+                GamePiecesGUI.vert_DownMover(p);
                 break;
             case 'R':
-                gamepiecesGUI.vert_RightMover(p);
+                GamePiecesGUI.vert_RightMover(p);
                 break;
             case 'h':
-                gamepiecesGUI.open_HorSwitch(p);
+                GamePiecesGUI.open_HorSwitch(p);
                 break;
             case 'H':
-                gamepiecesGUI.closed_HorSwitch(p);
+                GamePiecesGUI.closed_HorSwitch(p);
                 break;
             case 'v':
-                gamepiecesGUI.open_VertSwitch(p);
+                GamePiecesGUI.open_VertSwitch(p);
                 break;
             case 'V':
-                gamepiecesGUI.closed_VertSwitch(p);
+                GamePiecesGUI.closed_VertSwitch(p);
                 break;
             case 'k':
-                gamepiecesGUI.open_Key(p);
+                GamePiecesGUI.open_Key(p);
                 break;
             case 'K':
-                gamepiecesGUI.closed_Key(p);
+                GamePiecesGUI.closed_Key(p);
                 break;
             case 'p':
-                gamepiecesGUI.closed_Port(p);
+                GamePiecesGUI.closed_Port(p);
                 break;
             case 'P':
-                gamepiecesGUI.open_Port(p);
+                GamePiecesGUI.open_Port(p);
                 break;
             case 's':
-                gamepiecesGUI.player(p);
+                GamePiecesGUI.player(p);
                 break;
             default:
                 break;
@@ -199,14 +192,14 @@ public class gameBoard {
 
     public void drawBoard() { 
         StdDraw.clear();
-        gamepiecesGUI.drawBorder(boardWidth, boardHeight);
-      for (gamePiece piece : this.gamePieces) {
+        GamePiecesGUI.drawBorder(boardWidth, boardHeight);
+      for (GamePiece piece : this.GamePieces) {
           char symbol = piece.getSymbol();
           Position p = piece.getPosition();
-          draw_gamePiece(p, symbol);
+          drawGamePiece(p, symbol);
           
       }
-      draw_gamePiece(player.getPosition(), 's'); //  Overlaying the player piece over every other piece.
+      drawGamePiece(player.getPosition(), 's'); //  Overlaying the player piece over every other piece.
       StdDraw.show(30);
     }
 
@@ -214,7 +207,7 @@ public class gameBoard {
     
       if(isPlayerOnKey()) {
           
-         for (gamePiece piece : this.gamePieces) {
+         for (GamePiece piece : this.GamePieces) {
          
               if (piece.getSymbol() == 'p')      { piece.setSymbol('P'); }  
               
@@ -228,7 +221,7 @@ public class gameBoard {
     }
     
     private boolean isPlayerOnKey() {
-        gamePiece possibleKey = gamePieceAt(player.getPosition());
+        GamePiece possibleKey = GamePieceAt(player.getPosition());
         
         if (possibleKey == null) { 
             return false;
@@ -240,8 +233,8 @@ public class gameBoard {
         }
     }
 
-    private gamePiece gamePieceAt(Position p) {
-          for (gamePiece piece : this.gamePieces) {      
+    private GamePiece GamePieceAt(Position p) {
+          for (GamePiece piece : this.GamePieces) {      
               if(piece.getPosition().isEquals(p) && !(piece.getSymbol() == 's')) {
                   return piece;
               }
@@ -251,7 +244,7 @@ public class gameBoard {
 
     public boolean isPlayerDead() {
 
-        gamePiece currentPiece = gamePieceAt(player.getPosition());
+        GamePiece currentPiece = GamePieceAt(player.getPosition());
         if (currentPiece == null)                                                    { return false; }      
         else if (currentPiece.getSymbol() == 'D' || currentPiece.getSymbol() == 'd') { return true;  }
         else if (currentPiece.getSymbol() == 'U' || currentPiece.getSymbol() == 'u') { return true;  }
@@ -263,13 +256,13 @@ public class gameBoard {
 
     }
 
-    public ArrayList<gamePiece> getGamePiecesList() {
-        return gamePieces;
+    public ArrayList<GamePiece> getGamePiecesList() {
+        return GamePieces;
     }
     
     public boolean hasPlayerWon() {
       
-      gamePiece possibleTarget = gamePieceAt(player.getPosition());
+      GamePiece possibleTarget = GamePieceAt(player.getPosition());
 
       if (possibleTarget == null) { return false; }
       else { return possibleTarget.getSymbol() == 't'; }

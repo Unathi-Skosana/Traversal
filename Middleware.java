@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
 
-public class middleware {    
+public class Middleware {    
 
     public static char readKeys() {
         char pressedKey = '0';
@@ -15,16 +16,16 @@ public class middleware {
         return pressedKey;
     }
 
-    public static gameBoard parseArgs(String inputfile) throws FileNotFoundException { // move to main client Traversal.java
+    public static GameBoard parseArgs(String inputfile) throws FileNotFoundException { // move to main client Traversal.java
     
       Scanner in = new Scanner(new File(inputfile));
       
-      int boardWidth  = in.nextInt();
+      int boardHeight  = in.nextInt();
                         in.hasNext(" "); 
-      int boardHeight = in.nextInt();
+      int boardWidth = in.nextInt();
                         in.nextLine();
 
-      gameBoard traversalBoard = new gameBoard(boardWidth, boardHeight);
+      GameBoard traversalBoard = new GameBoard(boardWidth, boardHeight);
 
       for (int i = 0; i < boardHeight; i++) {
 
@@ -35,8 +36,8 @@ public class middleware {
               if (!(currentLine.charAt(j) == '.')) {
                  char symbol   = currentLine.charAt(j);
                  Position p      = new Position(j, boardHeight - i - 1);
-                 gamePiece piece = new gamePiece(symbol, p);
-                 traversalBoard.add_gamePiece(piece);
+                 GamePiece piece = new GamePiece(symbol, p);
+                 traversalBoard.addGamePiece(piece);
               }
           }
       }
@@ -44,9 +45,9 @@ public class middleware {
        return traversalBoard;
     }
 
-    public static void writeToConsole(ArrayList<gamePiece> gamepieces) {
+    public static void writeToConsole(ArrayList<GamePiece> gamepieces) {
     
-      for (gamePiece : gamepieces) {
+      for (GamePiece piece: gamepieces) {
            
       }
     

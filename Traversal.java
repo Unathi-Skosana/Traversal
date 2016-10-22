@@ -2,20 +2,20 @@ import java.io.FileNotFoundException;
 
 public class Traversal {
 
-    public gameBoard traversalBoard;
+    public GameBoard traversalBoard;
 
     public Traversal(String inputfile) throws FileNotFoundException {
-        this.traversalBoard = middleware.parseArgs(inputfile);     
+        this.traversalBoard = Middleware.parseArgs(inputfile);     
     }
 
     public void play() {
       
       int boardWidth  = traversalBoard.getBoardWidth();
       int boardHeight = traversalBoard.getBoardHeight();
-      gamepiecesGUI.initialiseCanvas(boardWidth, boardHeight);
+      GamePiecesGUI.initialiseCanvas(boardWidth, boardHeight);
       
       while (!traversalBoard.isPlayerDead() && !traversalBoard.hasPlayerWon()) {
-          traversalBoard.move(middleware.readKeys());
+          traversalBoard.move(Middleware.readKeys());
           traversalBoard.drawBoard();
       }
     

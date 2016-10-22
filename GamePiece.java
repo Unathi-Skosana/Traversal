@@ -1,9 +1,9 @@
-public class gamePiece {
+public class GamePiece {
 
     private char symbol;
     private Position position;
 
-    public gamePiece(char symbol, Position position) {
+    public GamePiece(char symbol, Position position) {
         this.position = position;
         this.symbol = symbol;
     }
