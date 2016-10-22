@@ -14,6 +14,7 @@ public class gamepiecesGUI {
         StdDraw.setCanvasSize(100 * R,100 * C);
         StdDraw.setXscale(0, R);
         StdDraw.setYscale(0, C);
+        drawBorder(R, C);
     }
 
     public static void drawBorder(int R, int C) {

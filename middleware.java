@@ -8,7 +8,7 @@ public class middleware {
         char pressedKey = '0';
 
         if(StdDraw.hasNextKeyTyped()) {
-                pressedKey = StdDraw.nextKeyTyped();
+              pressedKey = StdDraw.nextKeyTyped();
           
         }
 
@@ -19,11 +19,9 @@ public class middleware {
     
       Scanner in = new Scanner(new File(inputfile));
       
-      /* Fill code here */
-      
-      int boardWidth = in.nextInt();
+      int boardWidth  = in.nextInt();
                         in.hasNext(" "); 
-      int boardHeight  = in.nextInt();
+      int boardHeight = in.nextInt();
                         in.nextLine();
 
       gameBoard traversalBoard = new gameBoard(boardWidth, boardHeight);
@@ -46,17 +44,13 @@ public class middleware {
        return traversalBoard;
     }
 
-    public static void writeToConsole() {
+    public static void writeToConsole(ArrayList<gamePiece> gamepieces) {
     
-      /* Fill code here */
+      for (gamePiece : gamepieces) {
+           
+      }
     
     } 
 
-    public static void sound() {
-    
-      /* Fill code here */ 
-
-    }
-
+   
 }
-

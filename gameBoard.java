@@ -8,7 +8,6 @@ public class gameBoard {
     private ArrayList<gamePiece> gamePieces;
 
     public gameBoard(int boardWidth, int boardHeight) {
-        
         this.boardHeight = boardHeight;
         this.boardWidth  = boardWidth;
         gamePieces = new ArrayList<gamePiece>();
@@ -23,35 +22,34 @@ public class gameBoard {
     }
 
     public void add_gamePiece(gamePiece piece) {
-
       if (piece.getSymbol() == 's') { player = piece; }
         else { gamePieces.add(piece); }
     }
 
     public void move(char KeyPressed) {
         switch(KeyPressed) {
-          case 'a':
-            if (!(player.getPosition().getX() == 0)) {
-                loadEventsFromHorMove();
-                player.getPosition().decrementX();
-            }
-            break;
-          case 'd':
-            if (!(player.getPosition().getX() == boardWidth - 1)) {
-                loadEventsFromHorMove();
-                player.getPosition().incrementX();
-            }
-            break;
-          case 'w':
-            loadEventsFromVertMove();
-            if (player.getPosition().getY() == boardHeight - 1) { player.getPosition().setY(0); }
-            else                                                { player.getPosition().incrementY(); }
-            break;
-          case 's':
-            loadEventsFromVertMove();
-            if (player.getPosition().getY() == 0) { player.getPosition().setY(boardHeight - 1); }
-            else                                  { player.getPosition().decrementY(); }
-            break;
+            case 'a':
+                if (!(player.getPosition().getX() == 0)) {
+                    loadEventsFromHorMove();
+                    player.getPosition().decrementX();
+                }
+                break;
+            case 'd':
+                if (!(player.getPosition().getX() == boardWidth - 1)) {
+                    loadEventsFromHorMove();
+                    player.getPosition().incrementX();
+                }
+                break;
+            case 'w':
+                loadEventsFromVertMove();
+                if (player.getPosition().getY() == boardHeight - 1) { player.getPosition().setY(0); }
+                else                                                { player.getPosition().incrementY(); }
+                break;
+            case 's':
+                loadEventsFromVertMove();
+                if (player.getPosition().getY() == 0) { player.getPosition().setY(boardHeight - 1); }
+                else                                  { player.getPosition().decrementY(); }
+                break;
         }
     
     }
@@ -72,21 +70,21 @@ public class gameBoard {
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
                 case 'l':
-                if(piece.getPosition().getX() == 0) { piece.getPosition().setX(boardWidth - 1); }
-                else                                { piece.getPosition().decrementX();         }
-                  break;
+                    if(piece.getPosition().getX() == 1)               { piece.getPosition().setX(boardWidth - 1); }
+                    else                                              { piece.getPosition().decrementX();         }
+                    break;
                 case 'r':
-                if(piece.getPosition().getX() == boardWidth - 1) { piece.getPosition().setX(0);      }
-                else                                             { piece.getPosition().incrementX(); }
-                  break;
+                    if(piece.getPosition().getX() == boardWidth - 1)  { piece.getPosition().setX(0);      }
+                    else                                              { piece.getPosition().incrementX(); }
+                    break;
                 case 'd':
-                 if(piece.getPosition().getY() == 0) { piece.getPosition().setY(boardHeight - 1); }
-                 else                                { piece.getPosition().decrementY();          }
-                  break;
+                    if(piece.getPosition().getY() == 0)               { piece.getPosition().setY(boardHeight - 1); }
+                    else                                              { piece.getPosition().decrementY();          }
+                    break;
                 case 'u':
-                if(piece.getPosition().getY() == boardHeight - 1) { piece.getPosition().setY(0);      }
-                else                                              { piece.getPosition().incrementY(); }
-                  break;
+                    if(piece.getPosition().getY() == boardHeight - 1) { piece.getPosition().setY(0);      }
+                    else                                              { piece.getPosition().incrementY(); }
+                    break;
                 default:
                   break;
              }
@@ -97,23 +95,23 @@ public class gameBoard {
        for (gamePiece piece: this.gamePieces) {
            switch(piece.getSymbol()) {
                 case 'L':
-                if(piece.getPosition().getX() == 0) { piece.getPosition().setX(boardWidth - 1); }
-                else                                { piece.getPosition().decrementX();         }
-                  break;
+                    if(piece.getPosition().getX() == 0) { piece.getPosition().setX(boardWidth - 1); }
+                    else                                { piece.getPosition().decrementX();         }
+                    break;
                 case 'R':
-                if(piece.getPosition().getX() == boardWidth - 1) { piece.getPosition().setX(0);      }
-                else                                             { piece.getPosition().incrementX(); }
-                  break;
+                    if(piece.getPosition().getX() == boardWidth - 1) { piece.getPosition().setX(0);      }
+                    else                                             { piece.getPosition().incrementX(); }
+                    break;
                 case 'D':
-                 if(piece.getPosition().getY() == 0) { piece.getPosition().setY(boardHeight - 1); }
-                 else                                { piece.getPosition().decrementY();          }
-                  break;
+                    if(piece.getPosition().getY() == 0) { piece.getPosition().setY(boardHeight - 1); }
+                    else                                { piece.getPosition().decrementY();          }
+                    break;
                 case 'U':
-                if(piece.getPosition().getY() == boardHeight - 1) { piece.getPosition().setY(0);      }
-                else                                              { piece.getPosition().incrementY(); }
-                  break;
+                    if(piece.getPosition().getY() == boardHeight - 1) { piece.getPosition().setY(0);      }
+                    else                                              { piece.getPosition().incrementY(); }
+                    break;
                 default:
-                  break;
+                    break;
              }
        }
     }
@@ -122,8 +120,7 @@ public class gameBoard {
         for (gamePiece piece: this.gamePieces) {
             if(piece.getSymbol() == 'h') {
                 piece.setSymbol('H');
-            }  
-            else if (piece.getSymbol() == 'H') {    
+            } else if (piece.getSymbol() == 'H') {    
                 piece.setSymbol('h');
             }
         }
@@ -133,8 +130,7 @@ public class gameBoard {
         for (gamePiece piece: this.gamePieces) {
             if(piece.getSymbol() == 'v') {
                 piece.setSymbol('V');
-            }  
-            else if (piece.getSymbol() == 'V') {    
+            } else if (piece.getSymbol() == 'V') {    
                 piece.setSymbol('v');
             }
         } 
@@ -203,13 +199,14 @@ public class gameBoard {
 
     public void drawBoard() { 
         StdDraw.clear();
+        gamepiecesGUI.drawBorder(boardWidth, boardHeight);
       for (gamePiece piece : this.gamePieces) {
           char symbol = piece.getSymbol();
           Position p = piece.getPosition();
           draw_gamePiece(p, symbol);
           
       }
-      draw_gamePiece(player.getPosition(), 's'); //  Overlaying the player piece over every icon.
+      draw_gamePiece(player.getPosition(), 's'); //  Overlaying the player piece over every other piece.
       StdDraw.show(30);
     }
 
@@ -269,6 +266,7 @@ public class gameBoard {
     public ArrayList<gamePiece> getGamePiecesList() {
         return gamePieces;
     }
+    
     public boolean hasPlayerWon() {
       
       gamePiece possibleTarget = gamePieceAt(player.getPosition());
