@@ -23,4 +23,6 @@
   
   Errorhandling, such a text file without a key game piece or player piece.
 
-  Finish implemention.  
+  Finish implemention.
+
+  Document your code.
