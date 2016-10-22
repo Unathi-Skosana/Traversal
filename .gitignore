@@ -1,2 +1,6 @@
 *.txt
 *.class
+*.jar
+*.xml
+*.py
+.javadoc/

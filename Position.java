@@ -1,28 +1,47 @@
 public class Position {
-    private int x;
-    private int y;
+  private int xvalue;
+  private int yvalue;
 
-    public Position (int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+  public Position(int xvalue, int yvalue) {
+    this.xvalue = xvalue;
+    this.yvalue = yvalue;
+  }
     
-    public int getX() { return x; }
+  public int getX() {
+    return xvalue;
+  }
+ 
+  public int getY() {
+    return yvalue;
+  }
 
-    public int getY() { return y; }
+  public void setX(int xvalue)  {
+    this.xvalue = xvalue;
+  }
 
-    public void setX(int x)  { this.x = x; }
+  public void setY(int yvalue)  {
+    this.yvalue = yvalue;
+  }
 
-    public void setY(int y)  { this.y = y; }
+  public void incrementX() {
+    xvalue = xvalue + 1;
+  }
 
-    public void incrementX() { x = x + 1;  }
+  public void incrementY() {
+    yvalue = yvalue + 1;
+  }
 
-    public void incrementY() { y = y + 1;  }
+  public void decrementX() {
+    xvalue = xvalue - 1;
+  }
 
-    public void decrementX() { x = x - 1;  }
-
-    public void decrementY() { y = y - 1;  }
-    
-    public boolean isEquals(Position p) { return (p.getX() == this.x && p.getY() == this.y); }
+  public void decrementY() {
+    yvalue = yvalue - 1;
+  }
+  
+  public boolean isEquals(Position point) {
+    return point.getX() == this.xvalue
+        && point.getY() == this.yvalue; 
+  }
 
 }
