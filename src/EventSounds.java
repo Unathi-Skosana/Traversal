@@ -2,7 +2,7 @@
  * traversal game. Mantains synchrocity and prevents clips from
  *  stopping abruptly by using a synchronized method.
  *
- * */
+ */
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -22,7 +22,7 @@ public class EventSounds {
         try {
             Clip clip = AudioSystem.getClip();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                EventSounds.class.getResourceAsStream("Sounds/" + filename));
+                EventSounds.class.getResourceAsStream("sounds/" + filename));
               clip.open(inputStream);
               clip.start();
               Thread.sleep(clip.getMicrosecondLength() / 1000); 
