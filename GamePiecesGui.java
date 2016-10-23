@@ -1,3 +1,13 @@
+/* A static class responsible for drawing the game
+ * pieces of the traversal game using the Std* librabies
+ * from princeton university java booksite and the java Color class.
+ * The game pieces were hard coded, so you will encounter
+ * alot of ghost values within the methods.
+ *
+ * The methods of this class are self-explanatory, so 
+ * I omitted further documentation.
+ */
+
 import java.awt.Color;
 
 public class GamePiecesGui {
@@ -62,7 +72,7 @@ public class GamePiecesGui {
     StdDraw.filledCircle(.52 + point.getX() ,.52 + point.getY() ,.325);
   }
 
-  public static void hor_UpMover(Position point) {
+  public static void horizontalUpMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52, .40);
     StdDraw.setPenColor(blue);
@@ -75,7 +85,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  public static void hor_DownMover(Position point) {
+  public static void horizontalDownMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52, .40);
     StdDraw.setPenColor(darkOrange);
@@ -88,7 +98,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  public static void hor_RightMover(Position point) {
+  public static void horizontalRightMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52, .40);
     StdDraw.setPenColor(orange);
@@ -101,7 +111,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  public static void hor_LeftMover(Position point) {
+  public static void horizontalLeftMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52 ,.40);
     StdDraw.setPenColor(purple);
@@ -114,7 +124,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  public static void vert_LeftMover(Position point) {
+  public static void verticalLeftMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(purple);
@@ -127,7 +137,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .52,point.getY() + .195,point.getX() + .52,point.getY() + .29);
   }
 
-  public static void vert_RightMover(Position point) {
+  public static void verticalRightMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(orange);
@@ -140,7 +150,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .52,point.getY() + .195,point.getX() + .52,point.getY() + .29);
   }
 
-  public static void vert_UpMover(Position point) {
+  public static void verticalUpMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52, point.getY() + .52, .40);
     StdDraw.setPenColor(blue);
@@ -153,7 +163,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .52,point.getY() + .600,point.getX() + .64,point.getY() + .45);
   }
 
-  public static void vert_DownMover(Position point) {
+  public static void verticalDownMover(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(darkOrange);
@@ -166,7 +176,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .52,point.getY() + .450,point.getX() + .64,point.getY() + .59);
   }
 
-  public static void open_Key(Position point) {
+  public static void openKey(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(blue);
@@ -182,7 +192,7 @@ public class GamePiecesGui {
     StdDraw.filledCircle(point.getX() + .365,point.getY() + .52, .065);
   }
 
-  public static void open_Port(Position point) {
+  public static void closedPort(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.RED);
@@ -193,7 +203,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .36,point.getY() + .67,point.getX() + .67,point.getY() + .35);
   }
 
-  public static void open_VertSwitch(Position point) {
+  public static void closedVerticalSwitch(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.CYAN);
@@ -204,7 +214,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .52,point.getY() + .195,point.getX() + .52,point.getY() + .29);
   }
 
-  public static void open_HorSwitch(Position point) {
+  public static void closedHorizontalSwitch(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.CYAN);
@@ -215,7 +225,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  public static void closed_Key(Position point) {
+  public static void closedKey(Position point) {
     StdDraw.setPenColor(StdDraw.GRAY);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
@@ -232,7 +242,7 @@ public class GamePiecesGui {
   }
 
 
-  public static void closed_VertSwitch(Position point) {
+  public static void openVerticalSwitch(Position point) {
     StdDraw.setPenColor(StdDraw.GRAY);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
@@ -243,7 +253,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .52,point.getY() + .195,point.getX() + .52,point.getY() + .29);
   }
 
-  public static void closed_HorSwitch(Position point) {
+  public static void openHorizontalSwitch(Position point) {
     StdDraw.setPenColor(StdDraw.GRAY);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
@@ -254,7 +264,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  public static void closed_Port(Position point) {
+  public static void openPort(Position point) {
     StdDraw.setPenColor(StdDraw.GRAY);
     StdDraw.filledCircle(point.getX() + .52, point.getY() + .52, .40);
     StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
