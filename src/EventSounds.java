@@ -22,7 +22,7 @@ public class EventSounds {
         try {
             Clip clip = AudioSystem.getClip();
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                EventSounds.class.getResourceAsStream("sounds/" + filename));
+                EventSounds.class.getResourceAsStream("resources/sounds/" + filename));
               clip.open(inputStream);
               clip.start();
               Thread.sleep(clip.getMicrosecondLength() / 1000); 
