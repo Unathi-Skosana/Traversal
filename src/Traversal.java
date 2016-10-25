@@ -40,5 +40,13 @@ public class Traversal {
       String moves = in.nextLine();                    // Yank line 
       TextMode.play(board, moves);                     // Start TextMode.
     }
+    exit();
+  }
+
+  // Exits the game.
+
+  public static void exit() throws InterruptedException {
+    Thread.sleep(4000);
+    System.exit(0);
   }
 }

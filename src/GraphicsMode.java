@@ -15,7 +15,7 @@ public class GraphicsMode {
    * @args GameBoard
    * */
   
-  public static void play(GameBoard board) throws InterruptedException {
+  public static void play(GameBoard board) {
     GamePiecesGui.initialiseCanvas(board.getBoardWidth(), board.getBoardHeight());
     while (!board.isPlayerDead()
           && !board.hasPlayerWon()) {   // Read key and animate.
@@ -33,7 +33,5 @@ public class GraphicsMode {
       board.writeToConsole();
       StdOut.println("You lost !");
     }
-    Thread.sleep(4000);
-    System.exit(0);
   }
 }

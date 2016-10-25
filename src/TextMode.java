@@ -20,7 +20,7 @@ public class TextMode {
    * @args moves - Moves to be carried out on board.
    */
 
-  public static void play(GameBoard board, String moves) throws InterruptedException {
+  public static void play(GameBoard board, String moves) {
     GamePiecesGui.initialiseCanvas(board.getBoardWidth(), board.getBoardHeight());
     int stringIndex = 0;
     board.drawBoard();
@@ -44,10 +44,5 @@ public class TextMode {
       board.writeToConsole();
       StdOut.println("You lost !");
     }
-    
-    Thread.sleep(4000);
-    System.exit(0);
-
-
   }
 }
