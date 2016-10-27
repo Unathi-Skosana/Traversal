@@ -1,7 +1,7 @@
-/*  Middleware functions class, this class groups together functions
- *  that did not fit within the other classes. Since this class does not
- *  represent any abstraction at all.
- *
+/**
+ * Middleware functions class, this class groups together functions
+ * that did not fit within the other classes, since this class does
+ * not represent any abstraction.
  */
 
 import java.io.File;
@@ -12,10 +12,11 @@ import java.util.Scanner;
 
 public class Middleware {    
   
-  /* Listens for the keystroke from the keyboard
+  /**
+   * Listens for the keystroke from the keyboard
    * from the user.
    *
-   * returns character pressed.
+   * @return pressedKey - character pressed.
    */
   
   public static char readKeys() {
@@ -28,15 +29,13 @@ public class Middleware {
   }
 
 
-  /* processes inputfile containing the board contents and constructs a 
+  /**
+   * processes inputfile containing the board contents and constructs a 
    * GameBoard object from it, throws an FileNotFound Exception if the file
    * is not found.
-   *
-   * @args inputfile - file name that contains input represents the board to be constructed.
-   *
-   * returns a GameBoard object that was represented by input in the
-   * inputfile.
-   * */
+   * @param inputfile - file name that contains board input.
+   * @return traversalBoard - An instance of the GameBoard class.
+   */
 
   public static GameBoard parseArgs(String inputfile) throws FileNotFoundException {
     Scanner in = new Scanner(new File(inputfile));
@@ -49,7 +48,7 @@ public class Middleware {
     for (int i = 0; i < boardHeight; i++) {
       String currentLine = in.nextLine();
       for (int j = 0; j < boardWidth; j++) {
-        if (!(currentLine.charAt(j) == '.')) { // '.''s represent empty spaces.
+        if (!(currentLine.charAt(j) == '.')) { /* '.''s represent empty spaces. */
           char symbol     = currentLine.charAt(j);
           Position point  = new Position(j, boardHeight - i - 1);
           GamePiece piece = new GamePiece(symbol, point);
@@ -60,16 +59,15 @@ public class Middleware {
     return traversalBoard;
   }
 
-  /* an errorhandler in way, checks if a GameBoard board is valid by
+  /**
+   * an errorhandler in way, checks if a GameBoard board is valid by
    * checking the following:
    * The boards deminsions are in within the bounds of length 3 and 15
-   * If the GameBoard has a player game piece.
-   * If the GameBoard has a target game piece.
-   *
-   * if any of these conditions are not met, and Runtime Exception error is
-   * thrown to the user.
-   * 
-   * @args board - GameBoard to be evaluated.
+   * If the GameBoard instance has a player game piece
+   * If the GameBoard instance has a target game piece
+   * if any of these conditions are not met, a Runtime Exception error
+   * is thrown to the user.
+   * @param board - GameBoard instance to be evaluated.
    */
 
   public static void validateBoard(GameBoard board) {

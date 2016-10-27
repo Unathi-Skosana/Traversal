@@ -1,8 +1,8 @@
-/* The GameBoard class represents the abstraction of the
- * traversal board. It includes most of the functionality of
+/**
+ * The GameBoard class represents the abstraction of the
+ * traversal board, it includes most of the functionality of
  * the entire game such as moving the player piece around, and 
  * loading the correspinding events.
- *
  */
 
 import java.lang.RuntimeException;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 public class GameBoard {
   private final int boardWidth;
   private final int boardHeight;
+  private ArrayList<GamePiece> gamePieces;
   public GamePiece player;
   public GamePiece target;
-  private ArrayList<GamePiece> gamePieces;
 
-  /* Constructor, initialises gamePieces.
-   *
-   * @args int width, height;
+  /**
+   * Constructor, initialises gamePieces.
+   * @param int width, height;
    */
 
   public GameBoard(int boardWidth, int boardHeight) {
@@ -26,9 +26,8 @@ public class GameBoard {
     gamePieces = new ArrayList<GamePiece>();
   }
 
-  /* self-explanatory getter
-   * methods
-   *
+  /**
+   * self-explanatory getter methods
    * return dimensions of the board.
    */
 
@@ -40,11 +39,12 @@ public class GameBoard {
     return boardWidth;
   }
 
-  /* adds game pieces to an ArrayList, 
+  /**
+   * adds game pieces to an ArrayList, 
    * only if they are not player piece or
    * target piece.
-   *
-   * @args GamePiece to be added.
+   * @param piece - GamePiece instance to added to 
+   * the board
    */
 
   public void addGamePiece(GamePiece piece) {
@@ -57,9 +57,16 @@ public class GameBoard {
     }
   }
 
+  /**
+   * reads key from the user and
+   * moves player game piece and loads 
+   * corresponding events.
+   * @param keyPressed - key pressed by user.
+   */
+
   public void move(char keyPressed) {
     switch (keyPressed) {
-      case 'h':                                     // Key stroke for right move
+      case 'h': /*Keystroke for right movement */
         if (!(player.getPosition().getX() == 0)) {
           loadEventsFromHorMove();
           player.getPosition().decrementX();
@@ -68,7 +75,7 @@ public class GameBoard {
         }
         break;
 
-      case 'l':                                    // Key stroke for left move
+      case 'l': /* Keystroke for left movement */
         if (!(player.getPosition().getX() == boardWidth - 1)) {
           loadEventsFromHorMove();
           player.getPosition().incrementX();
@@ -77,19 +84,19 @@ public class GameBoard {
         }
         break;
       
-      case 'k':                                   // Key stroke for upward move
+      case 'k': /* Keystroke for upward movement */
         loadEventsFromVertMove();
         if (player.getPosition().getY() == boardHeight - 1) {
-          player.getPosition().setY(0);           // Wrap around
+          player.getPosition().setY(0);           /* Wrap around edge */
         } else {
           player.getPosition().incrementY();
         }
         break;
       
-      case 'j':                                  // Key stroke for downward move
+      case 'j': /* Keystroke for downward movement */
         loadEventsFromVertMove();
-        if (player.getPosition().getY() == 0) {
-          player.getPosition().setY(boardHeight - 1); // Wrap around
+        if (player.getPosition().getY() == 0) {       
+          player.getPosition().setY(boardHeight - 1); /* Wrap around edge.*/
         } else {
           player.getPosition().decrementY();
         }
@@ -100,10 +107,10 @@ public class GameBoard {
     }
   }
 
-  /* loads events that should occur following
-   * movement of the player piece in the horizontal
+  /**
+   * loads events that should occur following
+   * movement of the player in the horizontal
    * plane.
-   *
    */
 
   private void loadEventsFromHorMove() {
@@ -113,10 +120,10 @@ public class GameBoard {
     EventSounds.moveSound();
   }
 
-  /* loads events that should occur following
+  /**
+   * loads events that should occur following
    * movement of the player piece in the vertical
    * plane.
-   *
    */
 
   private void loadEventsFromVertMove() {
@@ -126,14 +133,12 @@ public class GameBoard {
     EventSounds.moveSound();
   }
 
-  /* moves horizontal every mover in it's direction
-   * motion for whenever a horizontal keystroke
-   * is pressed.
-   * 
-   * It does so, by iterating over all the game pieces
-   * in the ArrayList checking if the current piece has
-   * a symbol that represents a horizontal mover.
-   *
+  /**
+   * moves every horizontal mover on the this
+   * board in it's direction motion whenever 
+   * a keystroke for movemement in the horizontal
+   * plane is pressed, movers wrap around every
+   * edge on the board.
    */
 
   private void horizontalMovers() {        
@@ -173,10 +178,10 @@ public class GameBoard {
     }
   }
 
-  /* Counterpart of the above method follows the same procedure, but
+  /**
+   * Counterpart of the above method follows the same procedure, but
    * for vertical movers.
-   *
-   * */
+   */
 
   private void verticalMovers() {
     for (GamePiece piece: this.gamePieces) {
@@ -215,12 +220,10 @@ public class GameBoard {
     }
   }
 
-  /* Toggles switches from an on state to
-   * an off state, by switching it the symbol
-   * of the switch game piece whenever there is,
-   * horizontal movement.
-   *
-   * 
+  /**
+   * Toggles switches between on state and
+   * off state whenever there is movement
+   * in the horizontal plane.
    */
 
   private void toggleHorizontalSwitches() {
@@ -233,14 +236,11 @@ public class GameBoard {
     }
   }
 
-  /* Toggles switches from it's current state
-   * to opposite of the current state, by switching it the symbol
-   * of the switch game piece whenever there is,
-   * vertical movement.
-   *
-   * 
+  /**
+   * Toggles switches between on state and 
+   * off state whenever there is movement
+   * in the vertical plane.
    */
-
 
   private void toggleVerticalSwitches() {
     for (GamePiece piece: this.gamePieces) {
@@ -252,10 +252,10 @@ public class GameBoard {
     } 
   }
 
-  /* Draws game pieces using the GamePiecesGui class.
-   *
-   * @args point - where to draw the pieces on the StdDraw canvas.
-   * @args symbol - symbol of the game piece to be drawn.
+  /**
+   * Draws game pieces using the GamePiecesGui class.
+   * @param point - where to draw the pieces on the StdDraw canvas.
+   * @param symbol - symbol of the game piece to be drawn.
    */
 
   private void drawGamePiece(Position point, char symbol) { 
@@ -327,15 +327,15 @@ public class GameBoard {
       Position point = piece.getPosition();
       drawGamePiece(point, symbol);
     }
-    drawGamePiece(target.getPosition(), 't'); // target and the player are native to class.
-    drawGamePiece(player.getPosition(), 's'); // overlays the player piece over every other piece.
-    StdDraw.show(30); // Animation speed 30 microseconds.
+    drawGamePiece(target.getPosition(), 't'); /* target and the player are native to class. */ 
+    drawGamePiece(player.getPosition(), 's'); /* overlays the player piece over every other piece. */
+    StdDraw.show(30); /* Animation speed of 30 microseconds. */
   }
 
-  /* Toggles closed ports to open ports and vice versa,
-   * whenever the player piece consumes a unsed key and draws the
+  /**
+   * Toggles ports between open and closed state
+   * whenever the player piece eats a unsed key and draws the
    * board immediately.
-   * 
    */
 
   private void togglePorts() {
@@ -351,12 +351,13 @@ public class GameBoard {
     }
   }
 
-  /* checks if the player piece is has eaten a
-   * key game piece. By testing the if the player's
-   * current position corresponds to the position of
-   * the key game piece.
-   *
-   * returns boolean value.
+  /**
+   * checks if the player piece is has eaten a
+   * key game piece, by testing the if the player's
+   * current position is the same as the position
+   * of a key game piece
+   * @return boolean value - returns true if player is on key,
+   * otherwise it returns false.
    */
 
   
@@ -372,13 +373,13 @@ public class GameBoard {
     }
   }
 
-  /* fetchs game piece at the position specified as 
-   * it's argument. By iterating the ArrayList and stopping
-   * as soon as the piece is found.
-   *
-   * @args point - Position to fetch the piece from.
-   * returns piece at point if found, if not it returns
-   * a null value.
+  /**
+   * fetchs game piece at the position specified as 
+   * it's argument, by iterating the ArrayList and
+   * returning as soon as the piece is found
+   * @param  point - Position to fetch the piece from
+   * @return piece - piece at point if found, otherwise it
+   * returns a null value
    */
 
   private GamePiece gamePieceAt(Position point) {
@@ -390,11 +391,13 @@ public class GameBoard {
     return null;
   }
 
-  /* checks if player is deemed as dead, by checking if it's current
-   * position corresponds to the position of another game piece that would
-   * cause it's death.
-   *
-   * returns boolean value.
+  /**
+   * checks if player is dead
+   * @return boolean value - returns true 
+   * if the player's position corresponds
+   * to that  of a game piece that would 
+   * cause its death, otherwise
+   * it returns false.
    */
 
   public boolean isPlayerDead() {
@@ -424,20 +427,19 @@ public class GameBoard {
     }
   }
   
-  /* checks if the player, by checking it's current position
-   * corresponds to that of the target game piece.
-   *
-   * return boolean value.
+  /**
+   * checks if the player has won,
+   * returns true if player is on target game
+   * piece, returns false otherwise.
    */
 
   public boolean hasPlayerWon() {
     return target.getPosition().isEquals(player.getPosition());
   }
 
-  /*
+  /**
    * Prints the symbols of the game pieces of this board
    * on the console.
-   *
    */
 
   public void writeToConsole() {

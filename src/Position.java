@@ -1,10 +1,9 @@
-/* A class that represents a Euclidean point on the StdDraw
- * canvas. This was made in the hope of simplifying the
+/**
+ * A class that represents a Euclidean point on the StdDraw
+ * canvas, this was made in the hope of simplifying the
  * method signatures of classes within this project, that
- * take in x and y values.
- *
- *
- * Again the methods are self-explanatory, so I omit
+ * take in x and y values
+ * again the methods here are self-explanatory, so I omit
  * further documentation.
  */
 

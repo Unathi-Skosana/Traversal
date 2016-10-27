@@ -1,11 +1,11 @@
-/* A static class responsible for drawing the game
+/**
+ * A static class responsible for drawing the game
  * pieces of the traversal game using the Std* librabies
- * from princeton university java booksite and the java Color class.
+ * from princeton university java booksite and the java Color class
  * The game pieces were hard coded, so you will encounter
- * alot of ghost values within the methods.
- *
+ * alot of ghost values within the methods, which i'm not proud of
  * The methods of this class are self-explanatory, so 
- * I omitted further documentation.
+ * I omitted further documentation
  */
 
 import java.awt.Color;

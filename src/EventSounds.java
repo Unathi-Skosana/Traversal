@@ -1,7 +1,7 @@
-/* This class that handles event sounds for the game
- * traversal game. Mantains synchrocity and prevents clips from
- *  stopping abruptly by using a synchronized method.
- *
+/**
+ * This class that handles event sounds for the game
+ * traversal game, mantains synchrocity and prevents clips from
+ * stopping abruptly by using a synchronized method.
  */
 
 import javax.sound.sampled.AudioInputStream;
@@ -10,10 +10,10 @@ import javax.sound.sampled.Clip;
 
 public class EventSounds { 
   
-  /* synchronized methods, suspends the excution
+  /**
+   * synchronized methods, suspends the excution
    * of other sounds until the first thread is 
-   * done.
-   * 
+   * done.class 
    */
 
   private static synchronized void render(String filename) {
@@ -33,9 +33,9 @@ public class EventSounds {
     }).start();
   }
 
-  /* plays the rendered sound in a synchronized
+  /**
+   * plays the rendered sound in a synchronized
    * manner.
-   *
    */
   
   private static void playEventSound(String filename) {
@@ -46,9 +46,9 @@ public class EventSounds {
     }).start();
   }
 
-  /* self-explanatory methods follow,
-   * further documentation is omitted.
-   * 
+  /**
+   * self-explanatory methods follow
+   * further documentation is omitted. 
    */
 
   public static void wonGameSound() {
