@@ -17,7 +17,8 @@ public class GameBoard {
 
   /**
    * Constructor, initialises gamePieces.
-   * @param int width, height;
+   * @param boardWidth - width of GameBoard
+   * @param boardHeight - height of Gameboard
    */
 
   public GameBoard(int boardWidth, int boardHeight) {
@@ -43,8 +44,7 @@ public class GameBoard {
    * adds game pieces to an ArrayList, 
    * only if they are not player piece or
    * target piece.
-   * @param piece - GamePiece instance to added to 
-   * the board
+   * @param piece - GamePiece instance to added to the board
    */
 
   public void addGamePiece(GamePiece piece) {
@@ -319,6 +319,11 @@ public class GameBoard {
     }
   }
 
+  /**
+   * Draws graphical representation
+   * of the GameBoard instance.
+   */
+
   public void drawBoard() { 
     StdDraw.clear();
     GamePiecesGui.drawBorder(boardWidth, boardHeight);
@@ -327,15 +332,14 @@ public class GameBoard {
       Position point = piece.getPosition();
       drawGamePiece(point, symbol);
     }
-    drawGamePiece(target.getPosition(), 't'); /* target and the player are native to class. */ 
-    drawGamePiece(player.getPosition(), 's'); /* overlays the player piece over every other piece. */
+    drawGamePiece(target.getPosition(), 't'); /* target and the player are native to class */ 
+    drawGamePiece(player.getPosition(), 's'); /* overlays the player over every other game piece */
     StdDraw.show(30); /* Animation speed of 30 microseconds. */
   }
 
   /**
    * Toggles ports between open and closed state
-   * whenever the player piece eats a unsed key and draws the
-   * board immediately.
+   * whenever the player piece eats a unsed key.
    */
 
   private void togglePorts() {
@@ -355,12 +359,11 @@ public class GameBoard {
    * checks if the player piece is has eaten a
    * key game piece, by testing the if the player's
    * current position is the same as the position
-   * of a key game piece
+   * of a key game piece.
    * @return boolean value - returns true if player is on key,
-   * otherwise it returns false.
+   *     otherwise it returns false.
    */
 
-  
   private boolean isPlayerOnKey() {
     GamePiece possibleKey = gamePieceAt(player.getPosition());
     if (possibleKey == null) {
@@ -375,11 +378,11 @@ public class GameBoard {
 
   /**
    * fetchs game piece at the position specified as 
-   * it's argument, by iterating the ArrayList and
-   * returning as soon as the piece is found
+   * it's argument by iterating the ArrayList and
+   * returning as soon as the piece is found.
    * @param  point - Position to fetch the piece from
    * @return piece - piece at point if found, otherwise it
-   * returns a null value
+   *     returns a null value
    */
 
   private GamePiece gamePieceAt(Position point) {
@@ -392,12 +395,12 @@ public class GameBoard {
   }
 
   /**
-   * checks if player is dead
+   * checks if player is dead.
    * @return boolean value - returns true 
-   * if the player's position corresponds
-   * to that  of a game piece that would 
-   * cause its death, otherwise
-   * it returns false.
+   *     if the player's position corresponds
+   *     to that  of a game piece that would 
+   *     cause its death, otherwise
+   *     it returns false.
    */
 
   public boolean isPlayerDead() {

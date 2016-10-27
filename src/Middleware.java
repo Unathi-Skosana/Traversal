@@ -72,14 +72,14 @@ public class Middleware {
 
   public static void validateBoard(GameBoard board) {
     if (board.player == null) {
-      throw new RuntimeException("Invalid board: GameBoard must have at most one player game piece");
+      throw new RuntimeException("Error: GameBoard must have at most one player game piece");
     } else if (board.target == null) {
-      throw new RuntimeException("Invalid board: GameBoard must have at most one target game piece");
+      throw new RuntimeException("Error: GameBoard must have at most one target game piece");
     } else if (board.getBoardHeight() > 15 && 3 < board.getBoardHeight()) {
       System.out.println(board.getBoardHeight());
-      throw new RuntimeException("Invalid board: GameBoard dimensions out of bounds");
+      throw new RuntimeException("Error: GameBoard dimensions out of bounds");
     } else if (board.getBoardWidth() > 15 && 3 < board.getBoardWidth()) { 
-      throw new RuntimeException("Invalid board: GameBoard dimensions out of bounds");
+      throw new RuntimeException("Error: GameBoard dimensions out of bounds");
     }
   }
 
