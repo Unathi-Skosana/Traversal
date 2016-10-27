@@ -68,8 +68,8 @@ public class GameBoard {
     switch (keyPressed) {
       case 'h': /*Keystroke for right movement */
         if (!(player.getPosition().getX() == 0)) {
-          loadEventsFromHorMove();
           player.getPosition().decrementX();
+          loadEventsFromHorMove();
         } else {
           EventSounds.wallSound();
         }
@@ -77,29 +77,29 @@ public class GameBoard {
 
       case 'l': /* Keystroke for left movement */
         if (!(player.getPosition().getX() == boardWidth - 1)) {
-          loadEventsFromHorMove();
           player.getPosition().incrementX();
+          loadEventsFromHorMove();
         } else {
           EventSounds.wallSound();
         }
         break;
       
       case 'k': /* Keystroke for upward movement */
-        loadEventsFromVertMove();
         if (player.getPosition().getY() == boardHeight - 1) {
           player.getPosition().setY(0);           /* Wrap around edge */
         } else {
           player.getPosition().incrementY();
         }
+        loadEventsFromVertMove();
         break;
       
       case 'j': /* Keystroke for downward movement */
-        loadEventsFromVertMove();
         if (player.getPosition().getY() == 0) {       
           player.getPosition().setY(boardHeight - 1); /* Wrap around edge.*/
         } else {
           player.getPosition().decrementY();
         }
+        loadEventsFromVertMove();
         break;
       
       default:
@@ -114,9 +114,9 @@ public class GameBoard {
    */
 
   private void loadEventsFromHorMove() {
+    togglePorts();
     horizontalMovers();
     toggleHorizontalSwitches();
-    togglePorts();
     EventSounds.moveSound();
   }
 
@@ -127,9 +127,9 @@ public class GameBoard {
    */
 
   private void loadEventsFromVertMove() {
+    togglePorts();
     verticalMovers();
     toggleVerticalSwitches();
-    togglePorts();
     EventSounds.moveSound();
   }
 
@@ -347,7 +347,7 @@ public class GameBoard {
           piece.setSymbol('p');
         }
       }
-      drawBoard();
+      EventSounds.collectKeySound();
     }
   }
 
@@ -384,7 +384,7 @@ public class GameBoard {
 
   private GamePiece gamePieceAt(Position point) {
     for (GamePiece piece : this.gamePieces) {      
-      if (piece.getPosition().isEquals(point) && !(piece.getSymbol() == 's')) {
+      if (piece.getPosition().isEquals(point)) {
         return piece;
       }
     } 
