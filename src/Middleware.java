@@ -71,9 +71,9 @@ public class Middleware {
    */
 
   public static void validateBoard(GameBoard board) {
-    if (board.player == null) {
+    if (board.getPlayer() == null) {
       throw new RuntimeException("Error: GameBoard must have at most one player game piece");
-    } else if (board.target == null) {
+    } else if (board.getPlayer() == null) {
       throw new RuntimeException("Error: GameBoard must have at most one target game piece");
     } else if (board.getBoardHeight() > 15 && 3 < board.getBoardHeight()) {
       System.out.println(board.getBoardHeight());

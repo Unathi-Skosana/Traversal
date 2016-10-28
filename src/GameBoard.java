@@ -12,8 +12,8 @@ public class GameBoard {
   private final int boardWidth;
   private final int boardHeight;
   private ArrayList<GamePiece> gamePieces;
-  public GamePiece player;
-  public GamePiece target;
+  private GamePiece player; /* player piece is native to the board */
+  private GamePiece target; /* as well as the target piece */
 
   /**
    * Constructor, initialises gamePieces.
@@ -469,5 +469,17 @@ public class GameBoard {
       }
       StdOut.println();
     }
+  }
+
+  /**
+   * self-explanatory getter methods.
+   */
+
+  public GamePiece getPlayer() {
+    return player;
+  }
+
+  public GamePiece getTarget() {
+    return target;
   }
 }
