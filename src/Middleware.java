@@ -75,10 +75,8 @@ public class Middleware {
       throw new RuntimeException("Error: GameBoard must have at most one player game piece");
     } else if (board.getPlayer() == null) {
       throw new RuntimeException("Error: GameBoard must have at most one target game piece");
-    } else if (board.getBoardHeight() > 15 && 3 < board.getBoardHeight()) {
-      System.out.println(board.getBoardHeight());
-      throw new RuntimeException("Error: GameBoard dimensions out of bounds");
-    } else if (board.getBoardWidth() > 15 && 3 < board.getBoardWidth()) { 
+    } else if (board.getBoardHeight() > 15 && 3 < board.getBoardHeight()
+            || board.getBoardWidth() > 15 && 3 < board.getBoardWidth()) {
       throw new RuntimeException("Error: GameBoard dimensions out of bounds");
     }
   }

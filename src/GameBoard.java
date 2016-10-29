@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class GameBoard {
   private final int boardWidth;
   private final int boardHeight;
-  private ArrayList<GamePiece> gamePieces;
+  private ArrayList<GamePiece> gamePieces; /* List of game pieces on this board */
   private GamePiece player; /* player piece is native to the board */
   private GamePiece target; /* as well as the target piece */
 
