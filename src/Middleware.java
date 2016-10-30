@@ -68,6 +68,7 @@ public class Middleware {
    * if any of these conditions are not met, a Runtime Exception error
    * is thrown to the user.
    * @param board - GameBoard instance to be evaluated.
+   * @throws RuntimeException
    */
 
   public static void validateBoard(GameBoard board) {

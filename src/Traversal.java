@@ -1,26 +1,18 @@
-/******************************************************************
- *      Compilation  :javac Traversal.java                        *
- *                                                                *
- *      Execution    : java Traversal args0 -----> GraphicsMode   *
- *                   : java Traversal args0 args1 -----> TextMode *
- *                      args0 - boardfilename.txt                 *
- *                      args1 - movesfilename.txt                 *
- *      Dependancies : StdDraw libraries                          *
- *                                                                *
- *                                                                *
- *      ***************** Controls ******************             *
- *      h - left movement                                         *
- *      l - right movement                                        *
- *      j - down movement                                         *
- *      k - up movement                                           *
- *                                                                *
- *                                                                *
- *                                                                *
- *                                                                *
- *                                                                *
- ******************************************************************
- ******************************************************************
- */
+/**********************************************************************************
+ *      Compilation  : javac Traversal.java
+ *                                                              
+ *      Execution    : java Traversal args0 ----- GraphicsMode
+ *                   : java Traversal args0 args1 ----- TextMode
+ *      
+ *      Arguments    : args0 - boardfilename.txt
+ *                     args1 - movesfilename.txt
+ *      
+ *      Controls     : h - left movement
+ *                     l - right movement
+ *                     j - down movement
+ *                      k - up movement
+ * 
+ **********************************************************************************/
 
 import java.io.File;
 import java.io.FileNotFoundException;
