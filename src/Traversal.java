@@ -10,7 +10,7 @@
  *      Controls     : h - left movement
  *                     l - right movement
  *                     j - down movement
- *                      k - up movement
+ *                     k - up movement
  * 
  **********************************************************************************/
 
