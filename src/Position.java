@@ -49,7 +49,7 @@ public class Position {
     yvalue = yvalue - 1;
   }
   
-  public boolean isEquals(Position point) {
+  public boolean isEqualTo(Position point) {
     return point.getX() == this.xvalue
         && point.getY() == this.yvalue; 
   }

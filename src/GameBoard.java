@@ -387,7 +387,7 @@ public class GameBoard {
 
   private GamePiece gamePieceAt(Position point) {
     for (GamePiece piece : this.gamePieces) {      
-      if (piece.getPosition().isEquals(point)) {
+      if (piece.getPosition().isEqualTo(point)) {
         return piece;
       }
     } 
@@ -437,7 +437,7 @@ public class GameBoard {
    */
 
   public boolean hasPlayerWon() {
-    return target.getPosition().isEquals(player.getPosition());
+    return target.getPosition().isEqualTo(player.getPosition());
   }
 
   /**
@@ -455,10 +455,10 @@ public class GameBoard {
         } else if (piece != null) {
           board[col][boardHeight - row - 1] = piece.getSymbol();
         }
-        if (target.getPosition().isEquals(new Position(col, boardHeight - row - 1))) {
+        if (target.getPosition().isEqualTo(new Position(col, boardHeight - row - 1))) {
           board[col][boardHeight - row - 1] = 't';
         }
-        if (player.getPosition().isEquals(new Position(col, boardHeight - row - 1))) {
+        if (player.getPosition().isEqualTo(new Position(col, boardHeight - row - 1))) {
           board[col][boardHeight - row - 1] = 's';
         }
       }
