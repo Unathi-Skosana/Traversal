@@ -28,6 +28,20 @@ public class Middleware {
     return pressedKey;
   }
 
+  /**
+   * concatenates the lines in the input.
+   * @param input - scanner object created from the moves file.
+   * @return moves - the resulting string.
+   */
+
+  public static String readMoves(Scanner input) {
+    StringBuilder moves = new StringBuilder("");
+
+    while (input.hasNextLine()) {
+      moves.append(input.nextLine());
+    }
+    return moves.toString();
+  }
 
   /**
    * processes inputfile containing the board contents and constructs a 
@@ -68,7 +82,8 @@ public class Middleware {
    * if any of these conditions are not met, a Runtime Exception error
    * is thrown to the user.
    * @param board - GameBoard instance to be evaluated.
-   * @throws RuntimeException
+   * @throws RuntimeException - error exception for board dimensions out of
+   *     bounds.
    */
 
   public static void validateBoard(GameBoard board) {

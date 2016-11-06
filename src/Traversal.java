@@ -36,8 +36,7 @@ public class Traversal {
     } else if (args.length == 2) {
       GameBoard board = Middleware.parseArgs(args[0]);
       Middleware.validateBoard(board);               
-      Scanner in = new Scanner(new File(args[1]));    
-      String moves = in.nextLine();                     
+      String moves = Middleware.readMoves(new Scanner(new File(args[1])));                         
       TextMode.play(board, moves);                    
     }
     exit();
