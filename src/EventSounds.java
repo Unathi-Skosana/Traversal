@@ -8,12 +8,12 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class EventSounds { 
-  
+public class EventSounds {
+
   /**
    * synchronized methods, suspends the excution
-   * of other sounds until the first thread is 
-   * done.class 
+   * of other sounds until the first thread is
+   * done.class
    */
 
   private static synchronized void render(String filename) {
@@ -25,7 +25,7 @@ public class EventSounds {
                 EventSounds.class.getResourceAsStream("resources/sounds/" + filename));
               clip.open(inputStream);
               clip.start();
-              Thread.sleep(clip.getMicrosecondLength() / 1000); 
+              Thread.sleep(clip.getMicrosecondLength() / 1000);
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
@@ -37,7 +37,7 @@ public class EventSounds {
    * plays the rendered sound in a synchronized
    * manner.
    */
-  
+
   private static void playEventSound(String filename) {
     new Thread(new Runnable() {
       public void run() {
@@ -48,7 +48,7 @@ public class EventSounds {
 
   /**
    * self-explanatory methods follow
-   * further documentation is omitted. 
+   * further documentation is omitted.
    */
 
   public static void wonGameSound() {

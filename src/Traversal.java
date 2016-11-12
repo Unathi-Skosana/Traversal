@@ -1,17 +1,17 @@
 /**********************************************************************************
  *      Compilation  : javac Traversal.java
- *                                                              
+ *
  *      Execution    : java Traversal args0 ----- GraphicsMode
  *                   : java Traversal args0 args1 ----- TextMode
- *      
+ *
  *      Arguments    : args0 - boardfilename.txt
  *                     args1 - movesfilename.txt
- *      
+ *
  *      Controls     : h - left movement
  *                     l - right movement
  *                     j - down movement
  *                     k - up movement
- * 
+ *
  **********************************************************************************/
 
 import java.io.File;
@@ -23,29 +23,29 @@ public class Traversal {
   /**
   * Main client
   * takes a maximum of two commandline
-  * arguments of filenames, and calls 
+  * arguments of filenames, and calls
   * a game mode as decided by number of
-  * commandline arguments. 
+  * commandline arguments.
   */
-  public static void main(String[] args) throws FileNotFoundException, InterruptedException {  
+  public static void main(String[] args) throws FileNotFoundException, InterruptedException {
     if (args.length == 1) {
       GameBoard board = Middleware.parseArgs(args[0]);
-      Middleware.validateBoard(board);                 
-      GraphicsMode.play(board);                         
+      Middleware.validateBoard(board);
+      GraphicsMode.play(board);
 
     } else if (args.length == 2) {
       GameBoard board = Middleware.parseArgs(args[0]);
-      Middleware.validateBoard(board);               
-      String moves = Middleware.readMoves(new Scanner(new File(args[1])));                         
-      TextMode.play(board, moves);                    
+      Middleware.validateBoard(board);
+      String moves = Middleware.readMoves(new Scanner(new File(args[1])));
+      TextMode.play(board, moves);
     }
     exit();
   }
 
   /**
-   * Sleep for 4 microseconds to allow
+   * Sleep for 4000 microseconds to allow
    * the final event sound to finish
-   * playing and then exits. 
+   * playing and then exits.
    */
 
   public static void exit() throws InterruptedException {

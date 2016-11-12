@@ -10,22 +10,20 @@ import java.lang.RuntimeException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Middleware {    
-  
+public class Middleware {
+
   /**
    * Listens for the keystroke from the keyboard
    * from the user.
-   *
    * @return pressedKey - character pressed.
    */
-  
+
   public static char readKeys() {
-    char pressedKey = '0';  // Because I'm bad like that.
     if (StdDraw.hasNextKeyTyped()) {
-      pressedKey = StdDraw.nextKeyTyped();
-        
+      return StdDraw.nextKeyTyped();
+    } else {
+      return '1';
     }
-    return pressedKey;
   }
 
   /**
@@ -44,7 +42,7 @@ public class Middleware {
   }
 
   /**
-   * processes inputfile containing the board contents and constructs a 
+   * processes inputfile containing the board contents and constructs a
    * GameBoard object from it, throws an FileNotFound Exception if the file
    * is not found.
    * @param inputfile - file name that contains board input.
@@ -54,7 +52,7 @@ public class Middleware {
   public static GameBoard parseArgs(String inputfile) throws FileNotFoundException {
     Scanner in = new Scanner(new File(inputfile));
     int boardHeight  = in.nextInt();
-    in.hasNext(" "); 
+    in.hasNext(" ");
     int boardWidth   = in.nextInt();
     in.nextLine();
     GameBoard traversalBoard = new GameBoard(boardWidth, boardHeight);

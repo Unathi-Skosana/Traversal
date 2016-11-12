@@ -16,15 +16,15 @@ public class GamePiece {
   }
 
   public char getSymbol() {
-    return symbol; 
+    return symbol;
   }
 
   public Position getPosition() {
-    return position; 
+    return position;
   }
 
   public void setSymbol(char newSymbol) {
-    this.symbol = newSymbol; 
+    this.symbol = newSymbol;
   }
-    
+
 }

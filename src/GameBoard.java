@@ -1,7 +1,7 @@
 /**
  * The GameBoard class represents the abstraction of the
  * traversal board, it includes most of the functionality of
- * the entire game such as moving the player piece around, and 
+ * the entire game such as moving the player piece around, and
  * loading the correspinding events.
  */
 
@@ -41,7 +41,7 @@ public class GameBoard {
   }
 
   /**
-   * adds game pieces to an ArrayList, 
+   * adds game pieces to an ArrayList,
    * only if they are not player piece or
    * target piece.
    * @param piece - GamePiece instance to added to the board
@@ -59,7 +59,7 @@ public class GameBoard {
 
   /**
    * reads key from the user and
-   * moves player game piece and loads 
+   * moves player game piece and loads
    * corresponding events.
    * @param keyPressed - key pressed by user.
    */
@@ -83,7 +83,7 @@ public class GameBoard {
           EventSounds.wallSound();
         }
         break;
-      
+
       case 'k': /* Keystroke for upward movement */
         if (player.getPosition().getY() == boardHeight - 1) {
           player.getPosition().setY(0);           /* Wrap around edge */
@@ -92,16 +92,16 @@ public class GameBoard {
         }
         loadEventsFromVertMove();
         break;
-      
+
       case 'j': /* Keystroke for downward movement */
-        if (player.getPosition().getY() == 0) {       
+        if (player.getPosition().getY() == 0) {
           player.getPosition().setY(boardHeight - 1); /* Wrap around edge.*/
         } else {
           player.getPosition().decrementY();
         }
         loadEventsFromVertMove();
         break;
-      
+
       default:
         break;
     }
@@ -135,17 +135,17 @@ public class GameBoard {
 
   /**
    * moves every horizontal mover on the this
-   * board in it's direction motion whenever 
+   * board in it's direction motion whenever
    * a keystroke for movemement in the horizontal
    * plane is pressed, movers wrap around every
    * edge on the board.
    */
 
-  private void horizontalMovers() {        
+  private void horizontalMovers() {
     for (GamePiece piece: this.gamePieces) {
       switch (piece.getSymbol()) {
         case 'l':
-          if (piece.getPosition().getX() == 1) { 
+          if (piece.getPosition().getX() == 1) {
             piece.getPosition().setX(boardWidth - 1);
           } else {
             piece.getPosition().decrementX();
@@ -194,21 +194,21 @@ public class GameBoard {
           }
           break;
         case 'R':
-          if (piece.getPosition().getX() == boardWidth - 1) { 
+          if (piece.getPosition().getX() == boardWidth - 1) {
             piece.getPosition().setX(0);
           } else {
             piece.getPosition().incrementX();
           }
           break;
         case 'D':
-          if (piece.getPosition().getY() == 0) { 
+          if (piece.getPosition().getY() == 0) {
             piece.getPosition().setY(boardHeight - 1);
           } else {
             piece.getPosition().decrementY();
           }
           break;
         case 'U':
-          if (piece.getPosition().getY() == boardHeight - 1) { 
+          if (piece.getPosition().getY() == boardHeight - 1) {
             piece.getPosition().setY(0);
           } else {
             piece.getPosition().incrementY();
@@ -230,14 +230,14 @@ public class GameBoard {
     for (GamePiece piece: this.gamePieces) {
       if (piece.getSymbol() == 'h') {
         piece.setSymbol('H');
-      } else if (piece.getSymbol() == 'H') { 
+      } else if (piece.getSymbol() == 'H') {
         piece.setSymbol('h');
       }
     }
   }
 
   /**
-   * Toggles switches between on state and 
+   * Toggles switches between on state and
    * off state whenever there is movement
    * in the vertical plane.
    */
@@ -249,7 +249,7 @@ public class GameBoard {
       } else if (piece.getSymbol() == 'V') {
         piece.setSymbol('v');
       }
-    } 
+    }
   }
 
   /**
@@ -258,7 +258,7 @@ public class GameBoard {
    * @param symbol - symbol of the game piece to be drawn.
    */
 
-  private void drawGamePiece(Position point, char symbol) { 
+  private void drawGamePiece(Position point, char symbol) {
     switch (symbol) {
       case 't':
         GamePiecesGui.target(point);
@@ -324,7 +324,7 @@ public class GameBoard {
    * of the GameBoard instance.
    */
 
-  public void drawBoard() { 
+  public void drawBoard() {
     StdDraw.clear();
     GamePiecesGui.drawBorder(boardWidth, boardHeight);
     for (GamePiece piece : this.gamePieces) {
@@ -332,7 +332,7 @@ public class GameBoard {
       Position point = piece.getPosition();
       drawGamePiece(point, symbol);
     }
-    drawGamePiece(target.getPosition(), 't'); /* target and the player are native to class */ 
+    drawGamePiece(target.getPosition(), 't'); /* target and the player are native to class */
     drawGamePiece(player.getPosition(), 's'); /* overlays the player over every other game piece */
     StdDraw.show(30); /* Animation speed of 30 microseconds. */
   }
@@ -377,7 +377,7 @@ public class GameBoard {
   }
 
   /**
-   * fetchs game piece at the position specified as 
+   * fetchs game piece at the position specified as
    * it's argument by iterating the ArrayList and
    * returning as soon as the piece is found.
    * @param  point - Position to fetch the piece from
@@ -386,19 +386,19 @@ public class GameBoard {
    */
 
   private GamePiece gamePieceAt(Position point) {
-    for (GamePiece piece : this.gamePieces) {      
+    for (GamePiece piece : this.gamePieces) {
       if (piece.getPosition().isEqualTo(point)) {
         return piece;
       }
-    } 
+    }
     return null;
   }
 
   /**
    * checks if player is dead.
-   * @return boolean value - returns true 
+   * @return boolean value - returns true
    *     if the player's position corresponds
-   *     to that  of a game piece that would 
+   *     to that  of a game piece that would
    *     cause its death, otherwise
    *     it returns false.
    */
@@ -410,26 +410,26 @@ public class GameBoard {
     } else if (currentPiece.getSymbol() == 'D'
           || currentPiece.getSymbol() == 'd') {
       return true;
-    } else if (currentPiece.getSymbol() == 'U' 
+    } else if (currentPiece.getSymbol() == 'U'
           || currentPiece.getSymbol() == 'u') {
       return true;
-    } else if (currentPiece.getSymbol() == 'L' 
+    } else if (currentPiece.getSymbol() == 'L'
           || currentPiece.getSymbol() == 'l') {
       return true;
-    } else if (currentPiece.getSymbol() == 'R' 
+    } else if (currentPiece.getSymbol() == 'R'
           || currentPiece.getSymbol() == 'r') {
       return true;
-    } else if (currentPiece.getSymbol() == 'p' 
+    } else if (currentPiece.getSymbol() == 'p'
           || currentPiece.getSymbol() == 'x') {
       return true;
-    } else if (currentPiece.getSymbol() == 'h' 
+    } else if (currentPiece.getSymbol() == 'h'
           || currentPiece.getSymbol() == 'v') {
       return true;
     } else {
       return false;
     }
   }
-  
+
   /**
    * checks if the player has won,
    * returns true if player is on target game

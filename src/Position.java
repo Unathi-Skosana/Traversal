@@ -16,11 +16,11 @@ public class Position {
     this.xvalue = xvalue;
     this.yvalue = yvalue;
   }
-    
+
   public int getX() {
     return xvalue;
   }
- 
+
   public int getY() {
     return yvalue;
   }
@@ -48,10 +48,10 @@ public class Position {
   public void decrementY() {
     yvalue = yvalue - 1;
   }
-  
+
   public boolean isEqualTo(Position point) {
     return point.getX() == this.xvalue
-        && point.getY() == this.yvalue; 
+        && point.getY() == this.yvalue;
   }
 
 }

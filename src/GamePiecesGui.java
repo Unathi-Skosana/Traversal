@@ -4,7 +4,7 @@
  * from princeton university java booksite and the java Color class
  * The game pieces were hard coded, so you will encounter
  * alot of ghost values within the methods, which i'm not proud of
- * The methods of this class are self-explanatory, so 
+ * The methods of this class are self-explanatory, so
  * I omitted further documentation
  */
 
@@ -50,11 +50,11 @@ public class GamePiecesGui {
     StdDraw.line(rows,0,0,0);
   }
 
-  /** 
+  /**
    * player game piece.
    */
 
-  public static void player(Position point) {    
+  public static void player(Position point) {
     StdDraw.setPenColor(StdDraw.BLACK);
     StdDraw.filledCircle(point.getX() + .52,point.getY() + .52,.40);
     StdDraw.setPenColor(StdDraw.WHITE);
@@ -93,7 +93,7 @@ public class GamePiecesGui {
     StdDraw.filledCircle(.52 + point.getX() ,.52 + point.getY() ,.325);
   }
 
-  /** 
+  /**
    * horizontal up mover game piece.
    */
 
@@ -110,7 +110,7 @@ public class GamePiecesGui {
     StdDraw.line(point.getX() + .195,point.getY() + .52,point.getX() + .29,point.getY() + .52);
   }
 
-  /** 
+  /**
    * horizontal down mover game piece.
    */
 
@@ -345,7 +345,7 @@ public class GamePiecesGui {
   }
 
   /**
-   * openPort game piece. 
+   * openPort game piece.
    */
 
   public static void openPort(Position point) {
